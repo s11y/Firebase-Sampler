@@ -15,34 +15,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var label: UILabel!
     @IBOutlet var textField: UITextField!
 
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
+
         textField.layer.borderColor = ColorManager.mainColor.CGColor
         textField.delegate = self
 //        firebase.setValue(" Fire CRUD")
 
         firebase.observeEventType(.Value, withBlock: { snapShot in
             if let object = snapShot {
-                print("\(object)")
+//                print("\(object)")
                 self.label.text = String(object)
             }
         })
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        self.login()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func post(sender: UIButton) {
         if let object = textField.text {
-            let postData = Data(createdAt: getDate(), content: NSString(UTF8String: object)!)
+//            let postData = Data(createdAt: getDate(), content: NSString(UTF8String: object)!)
             firebase.childByAutoId().setValue(["postData": self.getDate(), "content": NSString(UTF8String: object)!])
+            
         }
         
         
     }
+    
+    @IBAction func showAction(sender: UIButton) {
+        
+    }
+    
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -56,6 +72,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         formatter.dateStyle = .FullStyle
         return NSString(string: formatter.stringFromDate(now))
     }
+    
+//    func login() {
+//        let user = FAuthData()
+//        if user.auth == nil {
+//            self.performSegueWithIdentifier("toSignup", sender: self)
+//        }
+//
+//    }
 
 
 }
