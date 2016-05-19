@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="K62-wY-j4T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="K62-wY-j4T">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -126,7 +126,7 @@
         <!--Sign Up-->
         <scene sceneID="Onf-5y-BAM">
             <objects>
-                <viewController id="x3n-Kb-uqf" sceneMemberID="viewController">
+                <viewController id="x3n-Kb-uqf" customClass="SignupViewController" customModule="SampleFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iMH-r8-DSb"/>
                         <viewControllerLayoutGuide type="bottom" id="2mD-Oc-od2"/>
@@ -145,11 +145,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPG-5e-U3o">
+                                <rect key="frame" x="141" y="376" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="willTransitionToLogin" destination="x3n-Kb-uqf" eventType="touchUpInside" id="KHp-Jx-NGe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGz-WG-FCx">
+                                <rect key="frame" x="126" y="283" width="68" height="49"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="willSignup" destination="x3n-Kb-uqf" eventType="touchUpInside" id="8b5-OO-KsN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="ojE-iR-Dr8"/>
                     <connections>
+                        <outlet property="emailTextField" destination="Y1D-Im-ioo" id="Kyl-91-z8C"/>
+                        <outlet property="passwordTextField" destination="J1m-cJ-hFd" id="1vS-nI-veo"/>
                         <segue destination="3Be-bl-tOs" kind="push" id="OVL-um-7JP"/>
                         <segue destination="MQM-R5-LPv" kind="push" id="tkl-pI-Ejv"/>
                     </connections>
@@ -212,6 +228,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e2g-dK-cf3"/>
+        <segue reference="OVL-um-7JP"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
@@ -35,6 +36,22 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func willTransitionToLogin() {
         
+    }
+    
+    private func signup() {
+        guard let email = emailTextField.text else  { return }
+        guard let password = passwordTextField.text else { return }
+        FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
+            if error != nil {
+                self.transitionToView()
+            }else {
+                print("\(error?.localizedDescription)")
+            }
+        })
+    }
+    
+    func transitionToView() {
+        self.performSegueWithIdentifier("", sender: self)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
