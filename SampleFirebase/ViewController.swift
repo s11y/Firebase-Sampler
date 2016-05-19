@@ -55,10 +55,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func showAction(sender: UIButton) {
-        
+    @IBAction func didSelectLogout() {
+        logout()
     }
     
+    private func logout() {
+        do {
+            try FIRAuth.auth()?.signOut()
+            self.navigationController?.popViewControllerAnimated(true)
+        }catch let error as NSError {
+            print("\(error.localizedDescription)")
+        }
+        
+    }
     
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -73,15 +82,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
         formatter.dateStyle = .FullStyle
         return NSString(string: formatter.stringFromDate(now))
     }
-    
-//    func login() {
-//        let user = FAuthData()
-//        if user.auth == nil {
-//            self.performSegueWithIdentifier("toSignup", sender: self)
-//        }
-//
-//    }
-
-
 }
 

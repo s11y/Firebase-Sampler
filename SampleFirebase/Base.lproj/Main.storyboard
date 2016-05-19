@@ -6,40 +6,6 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="5HV-Ux-cB9">
-            <objects>
-                <viewController id="3Be-bl-tOs" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Y6D-iY-JH7"/>
-                        <viewControllerLayoutGuide type="bottom" id="VNI-xO-Qjh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Zk8-cO-mvE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kvl-yq-nUs">
-                                <rect key="frame" x="20" y="129" width="280" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qj5-yn-JuV">
-                                <rect key="frame" x="20" y="212" width="280" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="VdQ-7j-Igf"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="push" id="4KX-KL-Bhm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xgc-AK-Qkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="346" y="286"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SampleFirebase" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,16 +30,16 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdZ-WD-REF">
                                 <rect key="frame" x="93" y="326" width="134" height="70"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Post"/>
                                 <connections>
                                     <action selector="post:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YPQ-g9-Llg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0E-KE-zQB">
-                                <rect key="frame" x="12" y="179" width="84" height="30"/>
-                                <state key="normal" title="ActionSheet"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APE-C6-PcM">
+                                <rect key="frame" x="134" y="530" width="52" height="30"/>
+                                <state key="normal" title="Log out"/>
                                 <connections>
-                                    <action selector="showAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rvV-iz-gP4"/>
+                                    <action selector="didSelectLogout" destination="BYZ-38-t0r" eventType="touchUpInside" id="xi9-js-60o"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -93,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="286"/>
+            <point key="canvasLocation" x="393" y="286"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="DVd-Lb-ucX">
@@ -166,8 +132,8 @@
                     <connections>
                         <outlet property="emailTextField" destination="Y1D-Im-ioo" id="Kyl-91-z8C"/>
                         <outlet property="passwordTextField" destination="J1m-cJ-hFd" id="1vS-nI-veo"/>
-                        <segue destination="3Be-bl-tOs" kind="push" identifier="toView" id="OVL-um-7JP"/>
                         <segue destination="MQM-R5-LPv" kind="push" identifier="toLogin" id="tkl-pI-Ejv"/>
+                        <segue destination="BYZ-38-t0r" kind="push" identifier="toView" id="UG5-3V-djS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggh-Uj-Yta" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,7 +176,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="8M0-dX-CqQ" id="M5X-zJ-xMG"/>
                         <outlet property="passwordTextField" destination="4lc-Mo-9t9" id="LMk-wG-noG"/>
-                        <segue destination="3Be-bl-tOs" kind="push" identifier="toVC" id="e2g-dK-cf3"/>
+                        <segue destination="BYZ-38-t0r" kind="push" id="UeV-Qv-kvF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9H-9K-3NY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,6 +203,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OVL-um-7JP"/>
+        <segue reference="UG5-3V-djS"/>
     </inferredMetricsTieBreakers>
 </document>

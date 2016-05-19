@@ -22,6 +22,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let currentUser = FIRAuth.auth()?.currentUser {
+            self.transitionToView()
+        }
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,7 +42,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func willTransitionToLogin() {
-        
+        transitionToLogin()
     }
     
     private func signup() {
@@ -46,6 +55,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 print("\(error?.localizedDescription)")
             }
         })
+    }
+    
+    func transitionToLogin() {
+        self.performSegueWithIdentifier("toLogin", sender: self)
     }
     
     func transitionToView() {
