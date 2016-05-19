@@ -8,7 +8,13 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet var emailTextField: UITextField!
+    
+    @IBOutlet var passwordTextField: UITextField!
+    
+    @IBOutlet var usernameTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
