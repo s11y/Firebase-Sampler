@@ -9,16 +9,17 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var usernameTextField: UITextField!
     
     @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,5 +29,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func didRegisterUser() {
         
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

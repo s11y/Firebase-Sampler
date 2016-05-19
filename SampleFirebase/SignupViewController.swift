@@ -33,6 +33,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func willTransitionToLogin() {
+        
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
