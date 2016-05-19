@@ -15,6 +15,7 @@
 		392767681C7AD9AF00A5DB93 /* SampleFirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767671C7AD9AF00A5DB93 /* SampleFirebaseTests.swift */; };
 		392767731C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */; };
 		392767811C7AE60F00A5DB93 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767801C7AE60F00A5DB93 /* Data.swift */; };
+		3928EE8C1CED74050065A9EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928EE8B1CED74050065A9EF /* SignupViewController.swift */; };
 		39388B9C1C7E137400A5AC0D /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39388B9B1C7E137400A5AC0D /* ColorManager.swift */; };
 		3940EE651CE83C8F00293067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940EE641CE83C8F00293067 /* User.swift */; };
 		3940EE671CE8409900293067 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940EE661CE8409900293067 /* LoginViewController.swift */; };
@@ -62,6 +63,7 @@
 		392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleFirebaseUITests.swift; sourceTree = "<group>"; };
 		392767741C7AD9AF00A5DB93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		392767801C7AE60F00A5DB93 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		3928EE8B1CED74050065A9EF /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		39388B9B1C7E137400A5AC0D /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		3940EE641CE83C8F00293067 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3940EE661CE8409900293067 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -138,7 +140,7 @@
 			children = (
 				395A409F1C81437A00ED11C5 /* Defaults-master */,
 				392767521C7AD9AF00A5DB93 /* AppDelegate.swift */,
-				392767541C7AD9AF00A5DB93 /* ViewController.swift */,
+				3928EE8D1CED742D0065A9EF /* Controllers */,
 				392767561C7AD9AF00A5DB93 /* Main.storyboard */,
 				392767591C7AD9AF00A5DB93 /* Assets.xcassets */,
 				3927675B1C7AD9AF00A5DB93 /* LaunchScreen.storyboard */,
@@ -147,9 +149,7 @@
 				392767801C7AE60F00A5DB93 /* Data.swift */,
 				39388B9B1C7E137400A5AC0D /* ColorManager.swift */,
 				395A40AC1C81509200ED11C5 /* CustomCell */,
-				395A40AD1C8151DD00ED11C5 /* ListViewController.swift */,
 				3940EE641CE83C8F00293067 /* User.swift */,
-				3940EE661CE8409900293067 /* LoginViewController.swift */,
 			);
 			path = SampleFirebase;
 			sourceTree = "<group>";
@@ -170,6 +170,17 @@
 				392767741C7AD9AF00A5DB93 /* Info.plist */,
 			);
 			path = SampleFirebaseUITests;
+			sourceTree = "<group>";
+		};
+		3928EE8D1CED742D0065A9EF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				392767541C7AD9AF00A5DB93 /* ViewController.swift */,
+				395A40AD1C8151DD00ED11C5 /* ListViewController.swift */,
+				3940EE661CE8409900293067 /* LoginViewController.swift */,
+				3928EE8B1CED74050065A9EF /* SignupViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		395A409F1C81437A00ED11C5 /* Defaults-master */ = {
@@ -390,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3928EE8C1CED74050065A9EF /* SignupViewController.swift in Sources */,
 				392767551C7AD9AF00A5DB93 /* ViewController.swift in Sources */,
 				392767811C7AE60F00A5DB93 /* Data.swift in Sources */,
 				395A40AE1C8151DD00ED11C5 /* ListViewController.swift in Sources */,

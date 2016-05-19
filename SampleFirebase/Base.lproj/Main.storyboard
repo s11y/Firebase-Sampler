@@ -123,6 +123,75 @@
             </objects>
             <point key="canvasLocation" x="1131" y="286"/>
         </scene>
+        <!--Sign Up-->
+        <scene sceneID="Onf-5y-BAM">
+            <objects>
+                <viewController id="x3n-Kb-uqf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iMH-r8-DSb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2mD-Oc-od2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J2l-g3-UDE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y1D-Im-ioo">
+                                <rect key="frame" x="20" y="139" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J1m-cJ-hFd">
+                                <rect key="frame" x="20" y="205" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sign Up" id="ojE-iR-Dr8"/>
+                    <connections>
+                        <segue destination="3Be-bl-tOs" kind="push" id="OVL-um-7JP"/>
+                        <segue destination="MQM-R5-LPv" kind="push" id="tkl-pI-Ejv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggh-Uj-Yta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-35" y="286"/>
+        </scene>
+        <!--Log in-->
+        <scene sceneID="Em8-s3-t0U">
+            <objects>
+                <viewController id="MQM-R5-LPv" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pa4-fc-Qlw"/>
+                        <viewControllerLayoutGuide type="bottom" id="2mW-Gy-7Q6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ytI-rQ-AmE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8M0-dX-CqQ">
+                                <rect key="frame" x="20" y="127" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-Mo-9t9">
+                                <rect key="frame" x="20" y="228" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Log in" id="Q7D-4t-vrW"/>
+                    <connections>
+                        <segue destination="3Be-bl-tOs" kind="push" id="e2g-dK-cf3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9H-9K-3NY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-35" y="949"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="EQy-Ss-dh9">
             <objects>
@@ -134,12 +203,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3Be-bl-tOs" kind="relationship" relationship="rootViewController" id="WTw-0a-ElL"/>
+                        <segue destination="x3n-Kb-uqf" kind="relationship" relationship="rootViewController" id="Vqs-hq-zco"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EX9-8f-eyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="286"/>
+            <point key="canvasLocation" x="-407" y="286"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="e2g-dK-cf3"/>
+    </inferredMetricsTieBreakers>
 </document>
