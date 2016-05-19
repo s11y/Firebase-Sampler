@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var emailTextField: UITextField!
     
@@ -18,7 +18,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +28,28 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didRegisterUser() {
-        
+        login()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    private func login() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
+            if error == nil{
+                print(FIRAuth.auth()?.currentUser)
+                self.transitionToView()
+            }else {
+                print("error...\(error?.localizedDescription)")
+            }
+        })
+    }
+    
+    func transitionToView()  {
+        self.performSegueWithIdentifier("toVC", sender: self)
     }
 }

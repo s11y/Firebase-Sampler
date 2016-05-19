@@ -51,14 +51,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //            firebase.childByAutoId().setValue(["postData": self.getDate(), "content": NSString(UTF8String: object)!])
 //            
 //        }
-        self.ref().setValue(<#T##value: AnyObject?##AnyObject?#>)
+//        self.ref().setValue(<#T##value: AnyObject?##AnyObject?#>)
         
     }
     
-    @IBAction func showAction(sender: UIButton) {
-        
+    @IBAction func didSelectLogout() {
+        logout()
     }
     
+    private func logout() {
+        do {
+            try FIRAuth.auth()?.signOut()
+            self.navigationController?.popViewControllerAnimated(true)
+        }catch let error as NSError {
+            print("\(error.localizedDescription)")
+        }
+        
+    }
     
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -73,15 +82,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
         formatter.dateStyle = .FullStyle
         return NSString(string: formatter.stringFromDate(now))
     }
-    
-//    func login() {
-//        let user = FAuthData()
-//        if user.auth == nil {
-//            self.performSegueWithIdentifier("toSignup", sender: self)
-//        }
-//
-//    }
-
-
 }
 
