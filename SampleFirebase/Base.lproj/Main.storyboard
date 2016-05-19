@@ -166,8 +166,8 @@
                     <connections>
                         <outlet property="emailTextField" destination="Y1D-Im-ioo" id="Kyl-91-z8C"/>
                         <outlet property="passwordTextField" destination="J1m-cJ-hFd" id="1vS-nI-veo"/>
-                        <segue destination="3Be-bl-tOs" kind="push" id="OVL-um-7JP"/>
-                        <segue destination="MQM-R5-LPv" kind="push" id="tkl-pI-Ejv"/>
+                        <segue destination="3Be-bl-tOs" kind="push" identifier="toView" id="OVL-um-7JP"/>
+                        <segue destination="MQM-R5-LPv" kind="push" identifier="toLogin" id="tkl-pI-Ejv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggh-Uj-Yta" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,7 +177,7 @@
         <!--Log in-->
         <scene sceneID="Em8-s3-t0U">
             <objects>
-                <viewController id="MQM-R5-LPv" sceneMemberID="viewController">
+                <viewController id="MQM-R5-LPv" customClass="LoginViewController" customModule="SampleFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pa4-fc-Qlw"/>
                         <viewControllerLayoutGuide type="bottom" id="2mW-Gy-7Q6"/>
@@ -196,12 +196,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NM6-1O-2Wj">
+                                <rect key="frame" x="126" y="340" width="68" height="44"/>
+                                <state key="normal" title="Log in"/>
+                                <connections>
+                                    <action selector="didRegisterUser" destination="MQM-R5-LPv" eventType="touchUpInside" id="vrG-yQ-rJp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Log in" id="Q7D-4t-vrW"/>
                     <connections>
-                        <segue destination="3Be-bl-tOs" kind="push" id="e2g-dK-cf3"/>
+                        <outlet property="emailTextField" destination="8M0-dX-CqQ" id="M5X-zJ-xMG"/>
+                        <outlet property="passwordTextField" destination="4lc-Mo-9t9" id="LMk-wG-noG"/>
+                        <segue destination="3Be-bl-tOs" kind="push" identifier="toVC" id="e2g-dK-cf3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9H-9K-3NY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,6 +237,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OVL-um-7JP"/>
+        <segue reference="e2g-dK-cf3"/>
     </inferredMetricsTieBreakers>
 </document>

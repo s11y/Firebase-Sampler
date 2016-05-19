@@ -31,7 +31,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func willSignup() {
-        
+        signup()
     }
     
     @IBAction func willTransitionToLogin() {
@@ -51,7 +51,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     func transitionToView() {
-        self.performSegueWithIdentifier("", sender: self)
+        self.performSegueWithIdentifier("toView", sender: self)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

@@ -11,14 +11,14 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
     
     @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        usernameTextField.delegate = self
+        emailTextField.delegate = self
         passwordTextField.delegate = self
     }
 
@@ -34,5 +34,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    private func login() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
+            if error != nil {
+                
+            }else {
+                print("\(error?.localizedDescription)")
+            }
+        })
+    }
+    
+    func transitionToView()  {
+        self.performSegueWithIdentifier("toVC", sender: self)
     }
 }
