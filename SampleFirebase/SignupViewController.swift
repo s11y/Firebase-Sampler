@@ -15,14 +15,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwordTextField: UITextField!
     
-    @IBOutlet var usernameTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        usernameTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +40,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text else  { return }
         guard let password = passwordTextField.text else { return }
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
-            if error != nil {
+            if error != nil{
                 self.transitionToView()
             }else {
                 print("\(error?.localizedDescription)")

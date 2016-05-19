@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class Data: FDataSnapshot{
+class Data: FIRDataSnapshot{
     var createdAt: NSString!
     var content: NSString!
     

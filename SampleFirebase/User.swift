@@ -9,6 +9,6 @@
 import UIKit
 import Firebase
 
-class User: FDataSnapshot {
+class User: FIRDataSnapshot {
     
 }

@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //            firebase.childByAutoId().setValue(["postData": self.getDate(), "content": NSString(UTF8String: object)!])
 //            
 //        }
-        self.ref().setValue(<#T##value: AnyObject?##AnyObject?#>)
+//        self.ref().setValue(<#T##value: AnyObject?##AnyObject?#>)
         
     }
     
