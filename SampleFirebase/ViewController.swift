@@ -10,8 +10,9 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
-    let firebase = Firebase(url: "https://samplecrud.firebaseio.com")
+//    
+//    let firebase = Firebase(url: "https://samplecrud.firebaseio.com")
+    let ref = FIRDatabase.database().reference
     @IBOutlet var label: UILabel!
     @IBOutlet var textField: UITextField!
 
@@ -25,12 +26,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self
 //        firebase.setValue(" Fire CRUD")
 
-        firebase.observeEventType(.Value, withBlock: { snapShot in
-            if let object = snapShot {
-//                print("\(object)")
-                self.label.text = String(object)
-            }
-        })
+//        firebase.observeEventType(.Value, withBlock: { snapShot in
+//            if let object = snapShot {
+////                print("\(object)")
+//                self.label.text = String(object)
+//            }
+//        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,12 +46,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func post(sender: UIButton) {
-        if let object = textField.text {
-//            let postData = Data(createdAt: getDate(), content: NSString(UTF8String: object)!)
-            firebase.childByAutoId().setValue(["postData": self.getDate(), "content": NSString(UTF8String: object)!])
-            
-        }
-        
+//        if let object = textField.text {
+////            let postData = Data(createdAt: getDate(), content: NSString(UTF8String: object)!)
+//            firebase.childByAutoId().setValue(["postData": self.getDate(), "content": NSString(UTF8String: object)!])
+//            
+//        }
+        self.r
         
     }
     
