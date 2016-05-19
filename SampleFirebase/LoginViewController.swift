@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didRegisterUser() {
-        
+        login()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -40,10 +40,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
-            if error != nil {
-                
+            if error == nil{
+                print(FIRAuth.auth()?.currentUser)
+                self.transitionToView()
             }else {
-                print("\(error?.localizedDescription)")
+                print("error...\(error?.localizedDescription)")
             }
         })
     }

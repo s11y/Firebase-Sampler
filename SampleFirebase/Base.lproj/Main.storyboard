@@ -176,7 +176,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="8M0-dX-CqQ" id="M5X-zJ-xMG"/>
                         <outlet property="passwordTextField" destination="4lc-Mo-9t9" id="LMk-wG-noG"/>
-                        <segue destination="BYZ-38-t0r" kind="push" id="UeV-Qv-kvF"/>
+                        <segue destination="BYZ-38-t0r" kind="push" identifier="toVC" id="UeV-Qv-kvF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9H-9K-3NY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,6 +203,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UG5-3V-djS"/>
+        <segue reference="UeV-Qv-kvF"/>
     </inferredMetricsTieBreakers>
 </document>
