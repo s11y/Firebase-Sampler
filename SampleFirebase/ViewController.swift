@@ -10,9 +10,8 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
-//    
-//    let firebase = Firebase(url: "https://samplecrud.firebaseio.com")
-    let ref = FIRDatabase.database().reference
+    
+    let ref = FIRDatabase.database().reference()
     @IBOutlet var label: UILabel!
     @IBOutlet var textField: UITextField!
 
@@ -24,14 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         textField.layer.borderColor = ColorManager.mainColor.CGColor
         textField.delegate = self
-//        firebase.setValue(" Fire CRUD")
 
-//        firebase.observeEventType(.Value, withBlock: { snapShot in
-//            if let object = snapShot {
-////                print("\(object)")
-//                self.label.text = String(object)
-//            }
-//        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,12 +38,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func post(sender: UIButton) {
-//        if let object = textField.text {
-////            let postData = Data(createdAt: getDate(), content: NSString(UTF8String: object)!)
-//            firebase.childByAutoId().setValue(["postData": self.getDate(), "content": NSString(UTF8String: object)!])
-//            
-//        }
-//        self.ref().setValue(<#T##value: AnyObject?##AnyObject?#>)
+        create()
+        
+    }
+    
+    private func create() {
+        guard let text = textField.text else { return }
+        let data = ["user": FIRAuth.auth()?.currentUser?.providerID ,"content": text, "date": getDate()]
+        self.ref.child((FIRAuth.auth()?.currentUser?.uid)!).childByAutoId().setValue(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": text, "date": getDate()])
+        
+        
         
     }
     
@@ -75,12 +71,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func getDate() -> NSString {
+    func getDate() -> String {
         let now = NSDate()
         let formatter = NSDateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja_JP")
         formatter.dateStyle = .FullStyle
-        return NSString(string: formatter.stringFromDate(now))
+        return formatter.stringFromDate(now)
     }
 }
 

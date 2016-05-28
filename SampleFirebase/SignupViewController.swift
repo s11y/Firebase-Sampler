@@ -26,7 +26,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let currentUser = FIRAuth.auth()?.currentUser {
+        if FIRAuth.auth()?.currentUser != nil{
             self.transitionToView()
         }
         
@@ -49,7 +49,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text else  { return }
         guard let password = passwordTextField.text else { return }
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
-            if error != nil{
+            if error == nil{
                 self.transitionToView()
             }else {
                 print("\(error?.localizedDescription)")
