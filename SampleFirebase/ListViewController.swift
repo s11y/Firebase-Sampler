@@ -12,7 +12,8 @@ import Firebase
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var table: UITableView!
-    var contentArray: [NSDictionary] = []
+    var contentArray: [FIRDataSnapshot] = []
+    var itemArray: [Data] = []
     let ref = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
@@ -39,16 +40,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func fetchData()  {
-        ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value, withBlock: {(snapShots) in
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.ChildAdded, withBlock: {(snapShots) in
             if snapShots.exists() == true {
-                print(snapShots)
-                for i in 0 ..< snapShots.hash {
-                    let item = snapShots as! FIRDataSnapshot
-                    let dic = item.value as! NSDictionary
-                    self.contentArray.append(dic)
-                }
-                
-                print(self.contentArray)
+                self.contentArray.append(snapShots)
                 self.table.reloadData()
             }
         })
@@ -63,7 +57,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = table.dequeueReusableCellWithIdentifier("ListCell") as! ListTableViewCell
         
         let item = contentArray[indexPath.row]
-        print(item["content"])
+        let content = item.value as! Dictionary<String, String>
+        cell.contentLabel.text = content["content"]
         
         
         return cell
