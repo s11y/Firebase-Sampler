@@ -52,8 +52,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    func getDate(time: NSTimeInterval) -> String {
-        let date = NSDate(timeIntervalSince1970: time)
+    func getDate(number: NSTimeInterval) -> String {
+        let date = NSDate(timeIntervalSince1970: number)
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         return formatter.stringFromDate(date)
@@ -68,9 +68,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let item = contentArray[indexPath.row]
         let content = item.value as! Dictionary<String, AnyObject>
-        cell.contentLabel.text = "\(content["content"])"
-        let time = content["date"]
-        cell.postDateLabel.text = "\(content["date"])"
+        cell.contentLabel.text = String(content["content"]!)
+        let time = content["date"] as! NSTimeInterval
+        cell.postDateLabel.text = self.getDate(time/1000)
         return cell
     }
     
