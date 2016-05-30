@@ -29,7 +29,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        self.login()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +44,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func create() {
         guard let text = textField.text else { return }
         let data = ["user": FIRAuth.auth()?.currentUser?.providerID ,"content": text, "date": getDate()]
-        self.ref.child((FIRAuth.auth()?.currentUser?.uid)!).childByAutoId().setValue(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": text, "date": getDate()])
+        self.ref.child((FIRAuth.auth()?.currentUser?.uid)!).childByAutoId().setValue(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": text, "date": FIRServerValue.timestamp()])
         
         
         
@@ -58,7 +57,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func logout() {
         do {
             try FIRAuth.auth()?.signOut()
-            self.navigationController?.popViewControllerAnimated(true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Nav")
+            self.presentViewController(storyboard, animated: true, completion: nil)
         }catch let error as NSError {
             print("\(error.localizedDescription)")
         }

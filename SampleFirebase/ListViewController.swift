@@ -32,6 +32,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(animated)
         
         fetchData()
+        
+        table.estimatedRowHeight = 56
+        table.rowHeight = UITableViewAutomaticDimension
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,6 +52,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func getDate(time: NSTimeInterval) -> String {
+        let date = NSDate(timeIntervalSince1970: time)
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        return formatter.stringFromDate(date)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contentArray.count
     }
@@ -57,10 +67,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = table.dequeueReusableCellWithIdentifier("ListCell") as! ListTableViewCell
         
         let item = contentArray[indexPath.row]
-        let content = item.value as! Dictionary<String, String>
-        cell.contentLabel.text = content["content"]
-        
-        
+        let content = item.value as! Dictionary<String, AnyObject>
+        cell.contentLabel.text = "\(content["content"])"
+        let time = content["date"]
+        cell.postDateLabel.text = "\(content["date"])"
         return cell
     }
     

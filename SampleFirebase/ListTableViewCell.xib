@@ -15,8 +15,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTd-Zc-mU7">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTd-Zc-mU7">
                         <rect key="frame" x="8" y="8" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="6he-wc-Ev7"/>
+                            <constraint firstAttribute="height" constant="21" id="KhX-y5-gjO"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -32,6 +36,7 @@
                     <constraint firstAttribute="topMargin" secondItem="vTd-Zc-mU7" secondAttribute="top" id="24t-7u-8uC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Gfm-3n-vHN" secondAttribute="trailing" id="7oC-tC-zkL"/>
                     <constraint firstAttribute="leadingMargin" secondItem="vTd-Zc-mU7" secondAttribute="leading" id="Cjq-4h-1Qs"/>
+                    <constraint firstItem="Gfm-3n-vHN" firstAttribute="top" secondItem="vTd-Zc-mU7" secondAttribute="bottom" constant="5" id="S7K-DN-3zk"/>
                     <constraint firstAttribute="leadingMargin" secondItem="Gfm-3n-vHN" secondAttribute="leading" id="eeo-oL-xHu"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Gfm-3n-vHN" secondAttribute="bottom" constant="0.5" id="qAO-cf-Enn"/>
                 </constraints>
