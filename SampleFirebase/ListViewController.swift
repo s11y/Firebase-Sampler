@@ -37,19 +37,39 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         table.rowHeight = UITableViewAutomaticDimension
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        ref.removeAllObservers()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func read()  {
+        if contentArray.count > 0 {
+            contentArray.removeAll()
+        }
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.ChildAdded, withBlock: {(snapShots) in
             if snapShots.exists() == true {
                 self.contentArray.append(snapShots)
                 self.table.reloadData()
             }
         })
-        
+        print(contentArray)
+    }
+    
+    func delete(deleteIndexPath indexPath: NSIndexPath) {
+        ref.observeEventType(.ChildRemoved, withBlock: {(snap) in
+            
+        })
+        let item = contentArray[indexPath.row]
+        let content = item.value
+        print("content...\(content)")
+//        let id = content["id"] as! String
+//        ref.child((FIRAuth.auth()?.currentUser?.uid)!).child(content).removeValue()
+        contentArray.removeAtIndex(indexPath.row)
     }
     
     func getDate(number: NSTimeInterval) -> String {
@@ -61,7 +81,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            contentArray.removeAtIndex(indexPath.row)
+            self.delete(deleteIndexPath: indexPath)
             table.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
@@ -78,6 +98,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.contentLabel.text = String(content["content"]!)
         let time = content["date"] as! NSTimeInterval
         cell.postDateLabel.text = self.getDate(time/1000)
+        
         return cell
     }
     

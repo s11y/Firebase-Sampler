@@ -38,16 +38,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func post(sender: UIButton) {
         create()
+        self.navigationController?.popViewControllerAnimated(true)
         
     }
     
     private func create() {
         guard let text = textField.text else { return }
-        let data = ["user": FIRAuth.auth()?.currentUser?.providerID ,"content": text, "date": getDate()]
         self.ref.child((FIRAuth.auth()?.currentUser?.uid)!).childByAutoId().setValue(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": text, "date": FIRServerValue.timestamp()])
-        
-        
-        
     }
     
     @IBAction func didSelectLogout() {
