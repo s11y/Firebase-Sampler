@@ -59,6 +59,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return formatter.stringFromDate(date)
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            contentArray.removeAtIndex(indexPath.row)
+            table.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contentArray.count
     }
