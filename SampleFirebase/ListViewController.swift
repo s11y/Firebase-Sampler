@@ -31,7 +31,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchData()
+        read()
         
         table.estimatedRowHeight = 56
         table.rowHeight = UITableViewAutomaticDimension
@@ -42,7 +42,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-    func fetchData()  {
+    func read()  {
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.ChildAdded, withBlock: {(snapShots) in
             if snapShots.exists() == true {
                 self.contentArray.append(snapShots)
