@@ -48,12 +48,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func read()  {
-        if contentArray.count >= 0 {
-            contentArray.removeAll()
-        }
-        ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.ChildAdded, withBlock: {(snapShots) in
+        contentArray.removeAll()
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value, withBlock: {(snapShots) in
             if snapShots.exists() == true {
-                self.contentArray.append(snapShots)
+                for item in snapShots.children {
+                    print("item...\(item)")
+                    self.contentArray.append(item as! FIRDataSnapshot)
+                }
                 self.table.reloadData()
             }
         })
