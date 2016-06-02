@@ -61,14 +61,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func delete(deleteIndexPath indexPath: NSIndexPath) {
-        ref.observeEventType(.ChildRemoved, withBlock: {(snap) in
-            
-        })
-        let item = contentArray[indexPath.row]
-        let content = item.value
-        print("content...\(content)")
-//        let id = content["id"] as! String
-//        ref.child((FIRAuth.auth()?.currentUser?.uid)!).child(content).removeValue()
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).removeValue()
         contentArray.removeAtIndex(indexPath.row)
     }
     
