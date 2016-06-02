@@ -26,11 +26,13 @@ ListViewControllerのread()関数で自身のPOSTしたデータのみを読み�
 
 それぞれをTableViewで表示しています。
 
+現在、FIRDataEventTypeをChildAddedで読み込んでいるために、不具合が生じているので、今後修正する予定です
+
 #### UPDATE
 今後実装予定
 
 #### DELETE
-今後実装予定
+ListViewControllerに実装しているdelete関数をtableview(tableview:commitEditingStyle)の中で呼び出し、NSIndexPathを渡すことで、該当するデータをDatabaseから削除しています。
 
 
 ### Push通知
