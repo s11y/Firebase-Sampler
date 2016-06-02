@@ -81,6 +81,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.performSegueWithIdentifier("toView", sender: self)
     }
     
+    func didSelectRow(selectedIndexPath indexPath: NSIndexPath) {
+        
+        self.transition()
+    }
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             self.delete(deleteIndexPath: indexPath)
@@ -89,7 +94,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        self.didSelectRow(selectedIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
