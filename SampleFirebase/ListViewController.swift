@@ -16,6 +16,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     var itemArray: [Data] = []
     let ref = FIRDatabase.database().reference()
     
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    var selectedSnap: FIRDataSnapshot!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,14 +57,18 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func read()  {
         contentArray.removeAll()
+        //FIRDataEventTypeを.Valueにすることにより、なにかしらの変化があった時に、実行
+        //Dataの個数と同じだけ、実行される
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value, withBlock: {(snapShots) in
             if snapShots.exists() == true {
-                for item in snapShots.children {
-                    print("item...\(item)")
-                    self.contentArray.append(item as! FIRDataSnapshot)
-                }
-                self.table.reloadData()
+                print("snapShots.children...\(snapShots.childrenCount)")
+                
+                self.contentArray.append(snapShots)
+                
+                
             }
+            self.userDefaults.setObject(self.contentArray, forKey: "items")
+            self.table.reloadData()
         })
         print(contentArray)
     }
@@ -82,7 +90,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func didSelectRow(selectedIndexPath indexPath: NSIndexPath) {
-        
+        self.selectedSnap = contentArray[indexPath.row]
         self.transition()
     }
     
@@ -111,6 +119,16 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.postDateLabel.text = self.getDate(time/1000)
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toView" {
+            let view = segue.destinationViewController as! ViewController
+            if let snap = self.selectedSnap {
+                view.selectedSnap = snap
+            }
+        }
+        
     }
     
 }
