@@ -47,6 +47,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func didSelectAdd() {
+        self.transition()
+    }
+    
     func read()  {
         contentArray.removeAll()
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value, withBlock: {(snapShots) in
@@ -73,11 +77,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return formatter.stringFromDate(date)
     }
     
+    func transition() {
+        self.performSegueWithIdentifier("toView", sender: self)
+    }
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             self.delete(deleteIndexPath: indexPath)
             table.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
