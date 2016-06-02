@@ -48,7 +48,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func read()  {
-        if contentArray.count > 0 {
+        if contentArray.count >= 0 {
             contentArray.removeAll()
         }
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.ChildAdded, withBlock: {(snapShots) in
@@ -61,14 +61,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func delete(deleteIndexPath indexPath: NSIndexPath) {
-        ref.observeEventType(.ChildRemoved, withBlock: {(snap) in
-            
-        })
-        let item = contentArray[indexPath.row]
-        let content = item.value
-        print("content...\(content)")
-//        let id = content["id"] as! String
-//        ref.child((FIRAuth.auth()?.currentUser?.uid)!).child(content).removeValue()
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).child(contentArray[indexPath.row].key).removeValue()
         contentArray.removeAtIndex(indexPath.row)
     }
     
