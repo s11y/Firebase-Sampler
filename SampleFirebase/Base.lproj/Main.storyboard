@@ -27,12 +27,13 @@
                     <navigationItem key="navigationItem" id="Gfg-Ly-7dx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XXL-G1-xmN">
                             <connections>
-                                <segue destination="3Il-Id-DTW" kind="push" id="Tfg-q5-p1Z"/>
+                                <action selector="didSelectAdd" destination="BYZ-38-t0r" id="0xp-Mi-2gh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="TCC-2y-ifd" id="DaO-Ao-vze"/>
+                        <segue destination="3Il-Id-DTW" kind="push" identifier="toView" id="Uru-lV-cBN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -87,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGI-GR-OeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1131" y="286"/>
+            <point key="canvasLocation" x="820" y="292"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="Onf-5y-BAM">

@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var label: UILabel!
     @IBOutlet var textField: UITextField!
 
-    
+    var selectedSnap: FIRDataSnapshot!
     
 
     override func viewDidLoad() {
