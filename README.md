@@ -29,7 +29,7 @@ ListViewControllerのread()関数で自身のPOSTしたデータのみを読み�
 
 それぞれをTableViewで表示しています。
 
-現在、FIRDataEventTypeをChildAddedで読み込んでいるために、不具合が生じているので、今後修正する予定です
+FIRDataEventTypeをValueにすることで、すべての変化に対して対応しています
 
 #### UPDATE
 今後実装予定
