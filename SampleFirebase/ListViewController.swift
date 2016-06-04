@@ -16,12 +16,17 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     var itemArray: [Data] = []
     let ref = FIRDatabase.database().reference()
     
+    var contents = [Dictionary<String, AnyObject>]()
+    
     let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    var snap: FIRDataSnapshot!
     
     var selectedSnap: FIRDataSnapshot!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         table.registerNib(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "ListCell")
         
@@ -35,7 +40,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        read()
+        self.read()
         
         table.estimatedRowHeight = 56
         table.rowHeight = UITableViewAutomaticDimension
@@ -43,6 +48,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         ref.removeAllObservers()
     }
     
@@ -56,21 +65,44 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func read()  {
-        contentArray.removeAll()
         //FIRDataEventTypeを.Valueにすることにより、なにかしらの変化があった時に、実行
         //Dataの個数と同じだけ、実行される
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value, withBlock: {(snapShots) in
-            if snapShots.exists() == true {
+            if snapShots.children.allObjects is [FIRDataSnapshot] {
                 print("snapShots.children...\(snapShots.childrenCount)")
                 
-                self.contentArray.append(snapShots)
+                print("snapShot...\(snapShots)")
                 
+                self.snap = snapShots
                 
             }
-            self.userDefaults.setObject(self.contentArray, forKey: "items")
-            self.table.reloadData()
+            self.reload(self.snap)
         })
-        print(contentArray)
+    }
+    
+    func reload(snap: FIRDataSnapshot) {
+        if snap.exists() {
+            contentArray.removeAll()
+            for item in snap.children {
+                contentArray.append(item as! FIRDataSnapshot)
+            }
+            table.reloadData()
+        }
+    }
+    
+    func fetch() {
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value) { (snap, str) in
+            if snap.children.allObjects is [FIRDataSnapshot] {
+                self.snap = snap
+            }
+        }
+        if self.snap != nil {
+            contentArray.removeAll()
+            for item in snap.children {
+                contentArray.append(item as! FIRDataSnapshot)
+            }
+            table.reloadData()
+        }
     }
     
     func delete(deleteIndexPath indexPath: NSIndexPath) {
