@@ -32,7 +32,10 @@ ListViewControllerのread()関数で自身のPOSTしたデータのみを読み�
 FIRDataEventTypeをValueにすることで、すべての変化に対して対応しています
 
 #### UPDATE
-今後実装予定
+ViewControllerのupdate関数でデータベース上の該当のデータを更新しています。
+
+isCreateで更新か作成かをBoolで判断しています。
+post関数でisCreateがどちらかによってcreateとupdateを切り替えてます
 
 #### DELETE
 ListViewControllerに実装しているdelete関数をtableview(tableview:commitEditingStyle)の中で呼び出し、NSIndexPathを渡すことで、該当するデータをDatabaseから削除しています。
