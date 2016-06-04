@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let ref = FIRDatabase.database().reference()
     @IBOutlet var label: UILabel!
     @IBOutlet var textField: UITextField!
+    
+    var isCreate = true
 
     var selectedSnap: FIRDataSnapshot!
     
@@ -31,6 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guard let snap = self.selectedSnap else { return }
         let item = snap.value as! Dictionary<String, AnyObject>
         textField.text = item["content"] as? String
+        isCreate = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +42,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func post(sender: UIButton) {
-        create()
+        if isCreate {
+            create()
+        }else {
+            update()
+        }
         self.navigationController?.popViewControllerAnimated(true)
         
     }
@@ -50,7 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func update() {
-        
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).child("\(self.selectedSnap.key)").updateChildValues(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": self.textField.text!, "date": FIRServerValue.timestamp()])
     }
     
     @IBAction func didSelectLogout() {
