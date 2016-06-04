@@ -28,7 +28,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+<<<<<<< HEAD
         
+=======
+        guard let snap = self.selectedSnap else { return }
+        let item = snap.value as! Dictionary<String, AnyObject>
+        textField.text = item["content"] as? String
+>>>>>>> f2d4ab9e51931c6a8d2c9869eee5bc890e5e910f
     }
 
     override func didReceiveMemoryWarning() {
