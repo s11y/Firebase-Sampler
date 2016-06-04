@@ -16,8 +16,17 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     var itemArray: [Data] = []
     let ref = FIRDatabase.database().reference()
     
+    var contents = [Dictionary<String, AnyObject>]()
+    
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    var snap: FIRDataSnapshot!
+    
+    var selectedSnap: FIRDataSnapshot!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         table.registerNib(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "ListCell")
         
@@ -31,7 +40,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        read()
+        self.read()
         
         table.estimatedRowHeight = 56
         table.rowHeight = UITableViewAutomaticDimension
@@ -39,6 +48,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         ref.removeAllObservers()
     }
     
@@ -47,18 +60,49 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func didSelectAdd() {
+        self.transition()
+    }
+    
     func read()  {
-        contentArray.removeAll()
+        //FIRDataEventTypeを.Valueにすることにより、なにかしらの変化があった時に、実行
+        //Dataの個数と同じだけ、実行される
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value, withBlock: {(snapShots) in
-            if snapShots.exists() == true {
-                for item in snapShots.children {
-                    print("item...\(item)")
-                    self.contentArray.append(item as! FIRDataSnapshot)
-                }
-                self.table.reloadData()
+            if snapShots.children.allObjects is [FIRDataSnapshot] {
+                print("snapShots.children...\(snapShots.childrenCount)")
+                
+                print("snapShot...\(snapShots)")
+                
+                self.snap = snapShots
+                
             }
+            self.reload(self.snap)
         })
-        print(contentArray)
+    }
+    
+    func reload(snap: FIRDataSnapshot) {
+        if snap.exists() {
+            contentArray.removeAll()
+            for item in snap.children {
+                contentArray.append(item as! FIRDataSnapshot)
+            }
+            table.reloadData()
+        }
+    }
+    
+    func fetch() {
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value) { (snap, str) in
+            if snap.children.allObjects is [FIRDataSnapshot] {
+                self.snap = snap
+            }
+        }
+        if self.snap != nil {
+            contentArray.removeAll()
+            for item in snap.children {
+                contentArray.append(item as! FIRDataSnapshot)
+            }
+            table.reloadData()
+        }
     }
     
     func delete(deleteIndexPath indexPath: NSIndexPath) {
@@ -73,11 +117,24 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return formatter.stringFromDate(date)
     }
     
+    func transition() {
+        self.performSegueWithIdentifier("toView", sender: self)
+    }
+    
+    func didSelectRow(selectedIndexPath indexPath: NSIndexPath) {
+        self.selectedSnap = contentArray[indexPath.row]
+        self.transition()
+    }
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             self.delete(deleteIndexPath: indexPath)
             table.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.didSelectRow(selectedIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,6 +151,16 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.postDateLabel.text = self.getDate(time/1000)
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toView" {
+            let view = segue.destinationViewController as! ViewController
+            if let snap = self.selectedSnap {
+                view.selectedSnap = snap
+            }
+        }
+        
     }
     
 }

@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var label: UILabel!
     @IBOutlet var textField: UITextField!
 
-    
+    var selectedSnap: FIRDataSnapshot!
     
 
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("\(selectedSnap)")
     }
 
     override func didReceiveMemoryWarning() {
