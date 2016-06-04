@@ -49,6 +49,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.ref.child((FIRAuth.auth()?.currentUser?.uid)!).childByAutoId().setValue(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": text, "date": FIRServerValue.timestamp()])
     }
     
+    private func update() {
+        
+    }
+    
     @IBAction func didSelectLogout() {
         logout()
     }
