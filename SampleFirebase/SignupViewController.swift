@@ -45,7 +45,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         transitionToLogin()
     }
     
-    private func signup() {
+    func signup() {
         guard let email = emailTextField.text else  { return }
         guard let password = passwordTextField.text else { return }
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in

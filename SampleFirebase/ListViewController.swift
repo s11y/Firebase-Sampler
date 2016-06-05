@@ -17,8 +17,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let ref = FIRDatabase.database().reference()
     
-    var contents = [Dictionary<String, AnyObject>]()
-    
     
     var snap: FIRDataSnapshot!
     

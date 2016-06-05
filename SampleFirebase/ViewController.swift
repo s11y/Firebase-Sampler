@@ -12,19 +12,19 @@ import Firebase
 class ViewController: UIViewController, UITextFieldDelegate {
     
     let ref = FIRDatabase.database().reference()
-
+    
     @IBOutlet var textField: UITextField!
     
     var isCreate = true
-
+    
     var selectedSnap: FIRDataSnapshot!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         textField.delegate = self
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.text = item["content"] as? String
         isCreate = false
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,12 +50,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    private func create() {
+    func create() {
         guard let text = textField.text else { return }
         self.ref.child((FIRAuth.auth()?.currentUser?.uid)!).childByAutoId().setValue(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": text, "date": FIRServerValue.timestamp()])
     }
     
-    private func update() {
+    func update() {
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).child("\(self.selectedSnap.key)").updateChildValues(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": self.textField.text!, "date": FIRServerValue.timestamp()])
     }
     
@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         logout()
     }
     
-    private func logout() {
+    func logout() {
         do {
             try FIRAuth.auth()?.signOut()
             let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Nav")
@@ -79,6 +79,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
+    
 }
 
