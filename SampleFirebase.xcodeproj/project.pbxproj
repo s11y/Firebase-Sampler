@@ -17,8 +17,6 @@
 		392767681C7AD9AF00A5DB93 /* SampleFirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767671C7AD9AF00A5DB93 /* SampleFirebaseTests.swift */; };
 		392767731C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */; };
 		3928EE8C1CED74050065A9EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928EE8B1CED74050065A9EF /* SignupViewController.swift */; };
-		39388B9C1C7E137400A5AC0D /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39388B9B1C7E137400A5AC0D /* ColorManager.swift */; };
-		3940EE651CE83C8F00293067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940EE641CE83C8F00293067 /* User.swift */; };
 		3940EE671CE8409900293067 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940EE661CE8409900293067 /* LoginViewController.swift */; };
 		395A40A31C81437A00ED11C5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 395A40A01C81437A00ED11C5 /* Default-568h@2x.png */; };
 		395A40A41C81437A00ED11C5 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 395A40A11C81437A00ED11C5 /* Default-667h@2x.png */; };
@@ -66,8 +64,6 @@
 		392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleFirebaseUITests.swift; sourceTree = "<group>"; };
 		392767741C7AD9AF00A5DB93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3928EE8B1CED74050065A9EF /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		39388B9B1C7E137400A5AC0D /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
-		3940EE641CE83C8F00293067 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3940EE661CE8409900293067 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		395A40A01C81437A00ED11C5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		395A40A11C81437A00ED11C5 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
@@ -144,9 +140,7 @@
 				3927675B1C7AD9AF00A5DB93 /* LaunchScreen.storyboard */,
 				3927675E1C7AD9AF00A5DB93 /* Info.plist */,
 				390928A21CF30E7500493172 /* GoogleService-Info.plist */,
-				39388B9B1C7E137400A5AC0D /* ColorManager.swift */,
 				395A40AC1C81509200ED11C5 /* CustomCell */,
-				3940EE641CE83C8F00293067 /* User.swift */,
 			);
 			path = SampleFirebase;
 			sourceTree = "<group>";
@@ -500,9 +494,7 @@
 				395A40AE1C8151DD00ED11C5 /* ListViewController.swift in Sources */,
 				392767531C7AD9AF00A5DB93 /* AppDelegate.swift in Sources */,
 				3940EE671CE8409900293067 /* LoginViewController.swift in Sources */,
-				39388B9C1C7E137400A5AC0D /* ColorManager.swift in Sources */,
 				395A40AA1C81500D00ED11C5 /* ListTableViewCell.swift in Sources */,
-				3940EE651CE83C8F00293067 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
