@@ -69,9 +69,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Dataの個数と同じだけ、実行される
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value, withBlock: {(snapShots) in
             if snapShots.children.allObjects is [FIRDataSnapshot] {
-                print("snapShots.children...\(snapShots.childrenCount)")
+                //                print("snapShots.children...\(snapShots.childrenCount)")
                 
-                print("snapShot...\(snapShots)")
+                //                print("snapShot...\(snapShots)")
                 
                 self.snap = snapShots
                 
@@ -82,21 +82,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func reload(snap: FIRDataSnapshot) {
         if snap.exists() {
-            contentArray.removeAll()
-            for item in snap.children {
-                contentArray.append(item as! FIRDataSnapshot)
-            }
-            table.reloadData()
-        }
-    }
-    
-    func fetch() {
-        ref.child((FIRAuth.auth()?.currentUser?.uid)!).observeEventType(.Value) { (snap, str) in
-            if snap.children.allObjects is [FIRDataSnapshot] {
-                self.snap = snap
-            }
-        }
-        if self.snap != nil {
             contentArray.removeAll()
             for item in snap.children {
                 contentArray.append(item as! FIRDataSnapshot)
@@ -160,7 +145,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 view.selectedSnap = snap
             }
         }
+    }
+    
+    func query() {
+        //dateをキーに順に並べる
+        ///ref.child((FIRAuth.auth()?.currentUser?.uid)!).queryOrderedByChild("date").observeEventType(.Value, withBlock: { (snap) in
+        //    print(snap)
+        //})
         
+        
+        //"content"の中に、"MIB"という単語があるかを調べる
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).queryOrderedByChild("content").queryEqualToValue("MIB").observeEventType(.Value, withBlock: { (snap) in
+            print(snap)
+        })
     }
     
 }
