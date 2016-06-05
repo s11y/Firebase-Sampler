@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import Firebase //Firebaseをインポート
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        //プッシュ通知形式などを登録
         let notificationSetting = UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: nil)
         application.registerUserNotificationSettings(notificationSetting)
         application.registerForRemoteNotifications()
-        FIRApp.configure()
+        
+        FIRApp.configure() //Firebaseとコネクト
+        
         return true
     }
 
