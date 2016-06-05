@@ -16,7 +16,6 @@
 		3927675D1C7AD9AF00A5DB93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3927675B1C7AD9AF00A5DB93 /* LaunchScreen.storyboard */; };
 		392767681C7AD9AF00A5DB93 /* SampleFirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767671C7AD9AF00A5DB93 /* SampleFirebaseTests.swift */; };
 		392767731C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */; };
-		392767811C7AE60F00A5DB93 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767801C7AE60F00A5DB93 /* Data.swift */; };
 		3928EE8C1CED74050065A9EF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928EE8B1CED74050065A9EF /* SignupViewController.swift */; };
 		39388B9C1C7E137400A5AC0D /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39388B9B1C7E137400A5AC0D /* ColorManager.swift */; };
 		3940EE651CE83C8F00293067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940EE641CE83C8F00293067 /* User.swift */; };
@@ -66,7 +65,6 @@
 		3927676E1C7AD9AF00A5DB93 /* SampleFirebaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleFirebaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleFirebaseUITests.swift; sourceTree = "<group>"; };
 		392767741C7AD9AF00A5DB93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		392767801C7AE60F00A5DB93 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		3928EE8B1CED74050065A9EF /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		39388B9B1C7E137400A5AC0D /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		3940EE641CE83C8F00293067 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				3927675B1C7AD9AF00A5DB93 /* LaunchScreen.storyboard */,
 				3927675E1C7AD9AF00A5DB93 /* Info.plist */,
 				390928A21CF30E7500493172 /* GoogleService-Info.plist */,
-				392767801C7AE60F00A5DB93 /* Data.swift */,
 				39388B9B1C7E137400A5AC0D /* ColorManager.swift */,
 				395A40AC1C81509200ED11C5 /* CustomCell */,
 				3940EE641CE83C8F00293067 /* User.swift */,
@@ -500,7 +497,6 @@
 			files = (
 				3928EE8C1CED74050065A9EF /* SignupViewController.swift in Sources */,
 				392767551C7AD9AF00A5DB93 /* ViewController.swift in Sources */,
-				392767811C7AE60F00A5DB93 /* Data.swift in Sources */,
 				395A40AE1C8151DD00ED11C5 /* ListViewController.swift in Sources */,
 				392767531C7AD9AF00A5DB93 /* AppDelegate.swift in Sources */,
 				3940EE671CE8409900293067 /* LoginViewController.swift in Sources */,

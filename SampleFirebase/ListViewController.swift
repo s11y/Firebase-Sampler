@@ -12,8 +12,9 @@ import Firebase
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var table: UITableView!
+    
     var contentArray: [FIRDataSnapshot] = []
-    var itemArray: [Data] = []
+    
     let ref = FIRDatabase.database().reference()
     
     var contents = [Dictionary<String, AnyObject>]()
@@ -43,10 +44,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         table.estimatedRowHeight = 56
         table.rowHeight = UITableViewAutomaticDimension
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     override func viewDidDisappear(animated: Bool) {
