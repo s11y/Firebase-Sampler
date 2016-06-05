@@ -18,7 +18,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var contents = [Dictionary<String, AnyObject>]()
     
-    let userDefaults = NSUserDefaults.standardUserDefaults()
     
     var snap: FIRDataSnapshot!
     

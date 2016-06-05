@@ -12,7 +12,7 @@ import Firebase
 class ViewController: UIViewController, UITextFieldDelegate {
     
     let ref = FIRDatabase.database().reference()
-    @IBOutlet var label: UILabel!
+
     @IBOutlet var textField: UITextField!
     
     var isCreate = true
@@ -23,7 +23,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textField.layer.borderColor = ColorManager.mainColor.CGColor
         textField.delegate = self
 
     }
@@ -80,13 +79,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    func getDate() -> String {
-        let now = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        formatter.dateStyle = .FullStyle
-        return formatter.stringFromDate(now)
-    }
+
 }
 
