@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import Firebase //Firebaseをインポート
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
