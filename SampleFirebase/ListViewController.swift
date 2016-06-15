@@ -78,6 +78,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     //読み込んだデータは最初すべてのデータが一つにまとまっているので、それらを分割して、配列に入れる
     func reload(snap: FIRDataSnapshot) {
         if snap.exists() {
+            print(snap)
             //FIRDataSnapshotが存在するか確認
             contentArray.removeAll()
             //1つになっているFIRDataSnapshotを分割し、配列に入れる
