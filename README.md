@@ -6,9 +6,9 @@
 ### 開発環境
 Xcode 7.3.1
 OS X 10.11.5
-Firebase 3.2.0
-Firebase Database 3.2.0
-Firebase Auth 3.2.0
+Firebase 3.2.1
+Firebase Database 3.0.1
+Firebase Auth 3.0.2
 
 ## 仕様
 ### 画面構成

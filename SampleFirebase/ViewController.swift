@@ -23,7 +23,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         textField.delegate = self //デリゲートをセット
-        
     }
     
     override func viewWillAppear(animated: Bool) {
