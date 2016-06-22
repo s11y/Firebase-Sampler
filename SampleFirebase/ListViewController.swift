@@ -85,6 +85,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             for item in snap.children {
                 contentArray.append(item as! FIRDataSnapshot)
             }
+            // ローカルのデータベースを更新
+            ref.child((FIRAuth.auth()?.currentUser?.uid)!).keepSynced(true)
             //テーブルビューをリロード
             table.reloadData()
         }
