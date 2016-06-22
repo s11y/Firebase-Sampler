@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         FIRApp.configure() //Firebaseとコネクト
-        FIRDatabase.database().persistenceEnabled = true
+        FIRDatabase.database().persistenceEnabled = true //ローカルにデータベースを構築する設定
         
         return true
     }
