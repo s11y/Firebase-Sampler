@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseStorage
+import FirebaseAuth
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -16,6 +17,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet var emailLabel: UILabel!
     
     var imagePicker: UIImagePickerController!
+    
+    let ref = FIRStorage.storage().reference()
+    
+    var uploadImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +67,32 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             self.presentViewController(imagePicker, animated: true, completion: nil)
         }
     }
+    
+    func create(uploadImage image: UIImage) {
+        let uploadData: NSData = UIImagePNGRepresentation(image)!
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).putData(uploadData, metadata: nil) { (data, error) in
+            if error != nil {
+                print("\(error?.localizedDescription)")
+            }else {
+                
+            }
+        }
+    }
+    
+//    func read() {
+//        let url: NSURL = NSURL(string: "file:///local/images/island.jpg")
+//        ref.child((FIRAuth.auth()?.currentUser?.uid)!).writeToFile(url, completion: <#T##((NSURL?, NSError?) -> Void)?##((NSURL?, NSError?) -> Void)?##(NSURL?, NSError?) -> Void#>)
+//    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            uploadImage = image
+            profileImageView.image = uploadImage
+            self.create(uploadImage: uploadImage)
+        }
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     func updateProfileImageView() {
         profileImageView.layer.cornerRadius = profileImageView.layer.bounds.width/2

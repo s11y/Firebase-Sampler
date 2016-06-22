@@ -24,6 +24,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //データを読み込むためのメソッド
+        self.read()
         
         //TableViewCellをNib登録、カスタムクラスを作成
         table.registerNib(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "ListCell")
@@ -37,8 +39,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //データを読み込むためのメソッド
-        self.read()
+        
         //Cellの高さを調節
         table.estimatedRowHeight = 56
         table.rowHeight = UITableViewAutomaticDimension
