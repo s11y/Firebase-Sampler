@@ -100,6 +100,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
+    func changeEmail() {
+        
+    }
+    
+    func changePassword() {
+        
+    }
+    
     func logout() {
         do {
             //do-try-catchの中で、FIRAuth.auth()?.signOut()を呼ぶだけで、ログアウトが完了
