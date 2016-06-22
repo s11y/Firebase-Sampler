@@ -75,23 +75,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).child("\(self.selectedSnap.key)").updateChildValues(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": self.textField.text!, "date": FIRServerValue.timestamp()])
     }
     
-    @IBAction func didSelectLogout() {
-        logout()
-    }
+
     
-    func logout() {
-        do {
-            //do-try-catchの中で、FIRAuth.auth()?.signOut()を呼ぶだけで、ログアウトが完了
-            try FIRAuth.auth()?.signOut()
-            
-            //先頭のNavigationControllerに遷移
-            let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Nav")
-            self.presentViewController(storyboard, animated: true, completion: nil)
-        }catch let error as NSError {
-            print("\(error.localizedDescription)")
-        }
-        
-    }
+    
     
     //Returnキーを押すと、キーボードを隠す
     func textFieldShouldReturn(textField: UITextField) -> Bool {

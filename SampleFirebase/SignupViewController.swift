@@ -29,10 +29,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         //ログインしていれば、遷移
         //FIRAuthがユーザー認証のためのフレーム
         //FIRAuth.auth()?.currentUserにログインしているユーザーの情報が入ってます。
-        if FIRAuth.auth()?.currentUser != nil{
+        if self.checkUserValidate() {
             self.transitionToView()
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,12 +57,28 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
             //エラーなしなら、認証完了
             if error == nil{
-                self.transitionToView()
+                user?.sendEmailVerificationWithCompletion({ (error) in
+                    if error == nil {
+                        self.transitionToLogin()
+                    }else {
+                        print("\(error?.localizedDescription)")
+                    }
+                })
             }else {
+                
                 print("\(error?.localizedDescription)")
             }
         })
+        
+        let creadial = FIREmailPasswordAuthProvider.credentialWithEmail(email, password: password)
+        print(creadial)
     }
+    
+    func checkUserValidate()  -> Bool {
+        guard let user = FIRAuth.auth()?.currentUser else { return false }
+        return user.emailVerified
+    }
+    
     //ログイン画面への遷移
     func transitionToLogin() {
         self.performSegueWithIdentifier("toLogin", sender: self)
