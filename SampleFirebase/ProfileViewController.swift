@@ -14,11 +14,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet var profileImageView: UIImageView!
     
     @IBOutlet var emailLabel: UILabel!
+    
+    var imagePicker: UIImagePickerController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.updateProfileImageView()
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,11 +50,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func presentPhotoLibrary() {
-        
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            imagePicker.sourceType = .PhotoLibrary
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
     }
     
     func presentCamera() {
-        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            imagePicker.sourceType = .Camera
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
     }
     
     func updateProfileImageView() {
