@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         emailTextField.delegate = self //デリゲートをセット
         passwordTextField.delegate = self //デリゲートをセット
+        passwordTextField.secureTextEntry  = true // 文字を非表示に
     }
 
     override func didReceiveMemoryWarning() {

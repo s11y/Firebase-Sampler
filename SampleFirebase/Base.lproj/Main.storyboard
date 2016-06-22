@@ -38,7 +38,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="925" y="286"/>
+            <point key="canvasLocation" x="1457" y="286"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="OZl-Gm-0Gm">
+            <objects>
+                <viewController id="L7r-lF-Aqs" customClass="ProfileViewController" customModule="SampleFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eaB-fi-RDD"/>
+                        <viewControllerLayoutGuide type="bottom" id="NBV-9o-Yp4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mQf-ID-f6v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Gf-D6-7O3">
+                                <rect key="frame" x="74" y="72" width="160" height="160"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idh-aI-BTu">
+                                <rect key="frame" x="20" y="240" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dE-hB-swE">
+                                <rect key="frame" x="204" y="202" width="30" height="30"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="didSelectPlus" destination="L7r-lF-Aqs" eventType="touchUpInside" id="Acb-kj-34V"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SHl-dV-5te"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="idh-aI-BTu" id="BQr-AK-fTi"/>
+                        <outlet property="profileImageView" destination="8Gf-D6-7O3" id="ZeW-sA-uMg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ftz-zl-Bq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="999"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DVd-Lb-ucX">
@@ -81,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGI-GR-OeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="292"/>
+            <point key="canvasLocation" x="1884" y="292"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="Onf-5y-BAM">
@@ -127,7 +168,7 @@
                         <outlet property="emailTextField" destination="Y1D-Im-ioo" id="Kyl-91-z8C"/>
                         <outlet property="passwordTextField" destination="J1m-cJ-hFd" id="1vS-nI-veo"/>
                         <segue destination="MQM-R5-LPv" kind="push" identifier="toLogin" id="tkl-pI-Ejv"/>
-                        <segue destination="lwv-X3-NKA" kind="modal" identifier="toView" id="UG5-3V-djS"/>
+                        <segue destination="XWJ-IU-hGc" kind="modal" identifier="toView" id="UG5-3V-djS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggh-Uj-Yta" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -170,7 +211,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="8M0-dX-CqQ" id="M5X-zJ-xMG"/>
                         <outlet property="passwordTextField" destination="4lc-Mo-9t9" id="LMk-wG-noG"/>
-                        <segue destination="lwv-X3-NKA" kind="modal" identifier="toVC" id="UeV-Qv-kvF"/>
+                        <segue destination="XWJ-IU-hGc" kind="modal" identifier="toVC" id="UeV-Qv-kvF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9H-9K-3NY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -195,24 +236,62 @@
             </objects>
             <point key="canvasLocation" x="-407" y="286"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="tfI-fX-A63">
+        <!--Tab Bar Controller-->
+        <scene sceneID="P8j-6s-okz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lwv-X3-NKA" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="XWJ-IU-hGc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Tv8-Q3-kdB"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W2U-8L-JnN">
+                    <navigationItem key="navigationItem" id="Qeq-XQ-YaU"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="L04-3u-n3c">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oS1-iq-Uh1" kind="relationship" relationship="viewControllers" id="gkv-dP-gM7"/>
+                        <segue destination="jfb-Py-H5A" kind="relationship" relationship="viewControllers" id="6UK-Lj-Me4"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jxy-4c-4dv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="447" y="292"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="yxf-97-Tsh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oS1-iq-Uh1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="78J-Jd-udA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Na7-gZ-m6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7zH-PI-dCn"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xTd-2r-7hf"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O2H-ZP-bqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Flv-C9-5Q3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="393" y="286"/>
+            <point key="canvasLocation" x="925" y="286"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="i5g-6t-wjM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jfb-Py-H5A" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="RRP-EQ-eib"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="csv-TC-bcM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L7r-lF-Aqs" kind="relationship" relationship="rootViewController" id="OMl-SD-tQ3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Egm-my-B3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845" y="999"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
