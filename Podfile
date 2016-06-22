@@ -9,7 +9,7 @@ pod 'Firebase', '>=2.5.0'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Messaging'
-
+pod 'Firebase/Storage'
 end
 
 target 'SampleFirebaseTests' do
