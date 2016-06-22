@@ -29,10 +29,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         //ログインしていれば、遷移
         //FIRAuthがユーザー認証のためのフレーム
         //FIRAuth.auth()?.currentUserにログインしているユーザーの情報が入ってます。
-        if self.checkValidate() {
+        if self.checkUserValidate() {
             self.transitionToView()
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,13 +58,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             //エラーなしなら、認証完了
             if error == nil{
                 user?.sendEmailVerificationWithCompletion({ (error) in
-                    if error != nil {
+                    if error == nil {
                         self.transitionToLogin()
                     }else {
                         print("\(error?.localizedDescription)")
                     }
                 })
-                
             }else {
                 
                 print("\(error?.localizedDescription)")
@@ -76,16 +74,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         print(creadial)
     }
     
-    func checkValidate()  -> Bool {
-        guard let user = FIRAuth.auth()?.currentUser else { return false}
-        if user.emailVerified == false {
-           let alert = UIAlertController(title: "メール認証", message: "メール認証を行ってください", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            return false
-        }
-        
-        return true
+    func checkUserValidate()  -> Bool {
+        guard let user = FIRAuth.auth()?.currentUser else { return false }
+        return user.emailVerified
     }
     
     //ログイン画面への遷移

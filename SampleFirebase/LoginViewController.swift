@@ -23,6 +23,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self //デリゲートをセット
         passwordTextField.secureTextEntry  = true // 文字を非表示に
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,22 +44,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     //ログインのためのメソッド
     func login() {
-        //EmailとPasswordのTextFieldに文字がなければ、その後の処理をしない
-        guard let email = emailTextField.text else { return }
-        guard let password = passwordTextField.text else { return }
-        
-        //signInWithEmailでログイン
-        //第一引数にEmail、第二引数にパスワードを取ります
-        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
-            //エラーなしなら、ログイン完了
-            if error == nil{
-                print(FIRAuth.auth()?.currentUser)
-                self.transitionToView()
-            }else {
-                print("error...\(error?.localizedDescription)")
-            }
-        })
+            //EmailとPasswordのTextFieldに文字がなければ、その後の処理をしない
+            guard let email = emailTextField.text else { return }
+            guard let password = passwordTextField.text else { return }
+            
+            //signInWithEmailでログイン
+            //第一引数にEmail、第二引数にパスワードを取ります
+            FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
+                //エラーなしなら、ログイン完了
+                if error == nil{
+                    if let loginUser = user {
+                        if self.checkUserValidate(loginUser) {
+                            print(FIRAuth.auth()?.currentUser)
+                            self.transitionToView()
+                        }else {
+                            self.presentValidateAlert()
+                        }
+                    }
+                }else {
+                    print("error...\(error?.localizedDescription)")
+                }
+            })
     }
+    
+    func checkUserValidate(user: FIRUser)  -> Bool {
+        return user.emailVerified
+    }
+    
+    func presentValidateAlert() {
+        let alert = UIAlertController(title: "メール認証", message: "メール認証を行ってください", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     //ログイン完了後に、ListViewControllerへの遷移のためのメソッド
     func transitionToView()  {
         self.performSegueWithIdentifier("toVC", sender: self)
