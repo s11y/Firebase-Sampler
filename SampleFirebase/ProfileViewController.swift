@@ -44,6 +44,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         self.presentActionSheet()
     }
     
+    @IBAction func didSelectLogout() {
+        self.logout()
+    }
+    
     func presentActionSheet() {
         let alert = UIAlertController(title: "写真を選択", message: "どちらから選択しますか?", preferredStyle: .ActionSheet)
         let library = UIAlertAction(title: "ライブラリ", style: .Default) { (action) in
@@ -94,17 +98,20 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 self.profileImageView.image = self.uploadImage
             }
         }
-        
-        
-        ref.child((FIRAuth.auth()?.currentUser?.uid)!).metadataWithCompletion { (data, error) in
-            if error != nil {
-                print("\(error?.localizedDescription)")
-            }else {
-                if data?.file == true {
-                    print(data)
-                }
-            }
+    }
+    
+    func logout() {
+        do {
+            //do-try-catchの中で、FIRAuth.auth()?.signOut()を呼ぶだけで、ログアウトが完了
+            try FIRAuth.auth()?.signOut()
+            
+            //先頭のNavigationControllerに遷移
+            let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Nav")
+            self.presentViewController(storyboard, animated: true, completion: nil)
+        }catch let error as NSError {
+            print("\(error.localizedDescription)")
         }
+        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
