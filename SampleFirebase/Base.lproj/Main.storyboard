@@ -64,6 +64,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BR9-bJ-xDE">
                                 <rect key="frame" x="116" y="472" width="89" height="30"/>
                                 <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="didSelectLogout" destination="L7r-lF-Aqs" eventType="touchUpInside" id="SFK-sm-Jw6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dE-hB-swE">
                                 <rect key="frame" x="210" y="202" width="30" height="30"/>
@@ -292,6 +295,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UeV-Qv-kvF"/>
+        <segue reference="UG5-3V-djS"/>
     </inferredMetricsTieBreakers>
 </document>
