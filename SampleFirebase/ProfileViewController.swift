@@ -29,6 +29,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.read()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -79,10 +84,28 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
-//    func read() {
-//        let url: NSURL = NSURL(string: "file:///local/images/island.jpg")
-//        ref.child((FIRAuth.auth()?.currentUser?.uid)!).writeToFile(url, completion: <#T##((NSURL?, NSError?) -> Void)?##((NSURL?, NSError?) -> Void)?##(NSURL?, NSError?) -> Void#>)
-//    }
+    func read() {
+        let gsReference = FIRStorage.storage().referenceForURL("gs://sampledrud.appspot.com")
+        gsReference.child((FIRAuth.auth()?.currentUser?.uid)!).dataWithMaxSize(1 * 1028 * 1028) { (data, error) in
+            if error != nil {
+                print("\(error?.localizedDescription)")
+            }else {
+                self.uploadImage = UIImage(data: data!)
+                self.profileImageView.image = self.uploadImage
+            }
+        }
+        
+        
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).metadataWithCompletion { (data, error) in
+            if error != nil {
+                print("\(error?.localizedDescription)")
+            }else {
+                if data?.file == true {
+                    print(data)
+                }
+            }
+        }
+    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
