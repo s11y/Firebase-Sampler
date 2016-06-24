@@ -57,8 +57,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
             //エラーなしなら、認証完了
             if error == nil{
+                // メールのバリデーションを行う
                 user?.sendEmailVerificationWithCompletion({ (error) in
                     if error == nil {
+                        // エラーがない場合にはそのままログイン画面に飛び、ログインしてもらう
                         self.transitionToLogin()
                     }else {
                         print("\(error?.localizedDescription)")
@@ -69,9 +71,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 print("\(error?.localizedDescription)")
             }
         })
-        
-        let creadial = FIREmailPasswordAuthProvider.credentialWithEmail(email, password: password)
-        print(creadial)
     }
     
     func checkUserValidate()  -> Bool {
