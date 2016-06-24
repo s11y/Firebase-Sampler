@@ -52,12 +52,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //第一引数にEmail、第二引数にパスワードを取ります
             FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
                 //エラーなしなら、ログイン完了
-                if error == nil{
+                if error == nil {
                     if let loginUser = user {
+                        // バリデーションが完了しているか確認。
                         if self.checkUserValidate(loginUser) {
+                            // 完了済みなら、ListViewControllerに遷移
                             print(FIRAuth.auth()?.currentUser)
                             self.transitionToView()
                         }else {
+                            // 完了していない場合は、アラートを表示
                             self.presentValidateAlert()
                         }
                     }
@@ -66,11 +69,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             })
     }
-    
+    // ログインした際に、バリデーションが完了しているか返す
     func checkUserValidate(user: FIRUser)  -> Bool {
         return user.emailVerified
     }
-    
+    // メールのバリデーションが完了していない場合のアラートを表示
     func presentValidateAlert() {
         let alert = UIAlertController(title: "メール認証", message: "メール認証を行ってください", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
