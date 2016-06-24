@@ -51,10 +51,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //signInWithEmailでログイン
             //第一引数にEmail、第二引数にパスワードを取ります
             FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
-                //エラーなしなら、ログイン完了
+                //エラーがないことを確認
                 if error == nil {
                     if let loginUser = user {
-                        // バリデーションが完了しているか確認。
+                        // バリデーションが完了しているか確認。完了ならそのままログイン
                         if self.checkUserValidate(loginUser) {
                             // 完了済みなら、ListViewControllerに遷移
                             print(FIRAuth.auth()?.currentUser)
