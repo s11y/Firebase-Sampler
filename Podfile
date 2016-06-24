@@ -10,6 +10,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Messaging'
 pod 'Firebase/Storage'
+pod 'FontAwesome.swift'
 end
 
 target 'SampleFirebaseTests' do

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FontAwesome.swift-FontAwesome.swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FontAwesome.swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SampleFirebase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -21,22 +31,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>095F48F613FB9D5FF332785D1065137A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5442FDD89C1D4DB2319634A1A89C9BC0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>86F563C354D3457FAD09B220BAB2348D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

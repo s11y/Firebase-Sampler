@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '095F48F613FB9D5FF332785D1065137A'
-               BlueprintName = 'Pods-SampleFirebaseTests'
+               BlueprintIdentifier = '9E64D3E3A7AD1A87C822114B7473AE1E'
+               BlueprintName = 'FontAwesome.swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-SampleFirebaseTests.framework'>
+               BuildableName = 'FontAwesome.swift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
