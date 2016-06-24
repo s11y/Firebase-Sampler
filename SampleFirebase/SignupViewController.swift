@@ -15,7 +15,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwordTextField: UITextField! //Passwordを打つためのTextField
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,8 +27,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         //ログインしていれば、遷移
         //FIRAuthがユーザー認証のためのフレーム
-        //FIRAuth.auth()?.currentUserにログインしているユーザーの情報が入ってます。
-        if self.checkUserValidate() {
+        //checkUserVerifyでチェックして、ログイン済みなら画面遷移
+        if self.checkUserVerify() {
             self.transitionToView()
         }
     }
@@ -72,8 +71,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
-    
-    func checkUserValidate()  -> Bool {
+    // ログイン済みかどうかと、メールのバリデーションが完了しているか確認
+    func checkUserVerify()  -> Bool {
         guard let user = FIRAuth.auth()?.currentUser else { return false }
         return user.emailVerified
     }
