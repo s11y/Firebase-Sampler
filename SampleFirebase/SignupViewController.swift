@@ -15,6 +15,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwordTextField: UITextField! //Passwordを打つためのTextField
     
+    @IBOutlet var facebookButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +48,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func willTransitionToLogin() {
         transitionToLogin()
     }
+    
+    @IBAction func willLoginWithFacebook() {
+        
+    }
     //Signupのためのメソッド
     func signup() {
         //emailTextFieldとpasswordTextFieldに文字がなければ、その後の処理をしない
@@ -70,6 +76,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 print("\(error?.localizedDescription)")
             }
         })
+    }
+    // Facebookでユーザー認証するためのメソッド
+    func loginWithFacebook() {
     }
     // ログイン済みかどうかと、メールのバリデーションが完了しているか確認
     func checkUserVerify()  -> Bool {
