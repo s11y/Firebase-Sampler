@@ -8,13 +8,13 @@
 
 import UIKit
 import Firebase //Firebaseをインポート
+import FontAwesome_swift
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var emailTextField: UITextField! // Emailを打つためのTextField
     
     @IBOutlet var passwordTextField: UITextField! //Passwordを打つためのTextField
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
