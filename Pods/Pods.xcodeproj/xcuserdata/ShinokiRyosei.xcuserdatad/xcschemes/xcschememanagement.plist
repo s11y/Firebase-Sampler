@@ -4,6 +4,26 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKShareKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FontAwesome.swift-FontAwesome.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +57,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0EB19C1377A747F81110D44E2D5FCF78</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1088253F42C36418734CF3D95E31B8AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CD54BD02576A88DD8BD51D37B166A71</key>
+		<key>30D7FCF8072F5D59AE1C98D94F9A6EC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52D82BFDD1E808D9CB257431922C1EE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>9E64D3E3A7AD1A87C822114B7473AE1E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D47B8C91AD197961B9CCE65ED6B89CD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
