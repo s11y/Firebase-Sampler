@@ -79,6 +79,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     // Facebookでユーザー認証するためのメソッド
     func loginWithFacebook() {
+        FIRAuth.auth()?.signInWithCredential(, completion: { (user, error) in
+            if error != nil {
+                
+            }
+        })
     }
     // ログイン済みかどうかと、メールのバリデーションが完了しているか確認
     func checkUserVerify()  -> Bool {
