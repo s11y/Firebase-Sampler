@@ -84,30 +84,46 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     // Facebookでユーザー認証するためのメソッド
     func loginWithFacebook() {
         let facebookLogin = FBSDKLoginManager()
-        facebookLogin.logInWithReadPermissions(["email"], fromViewController: self) { (facebookResult, facebookError) in
+        facebookLogin.logInWithReadPermissions(["email", "public_profile"], fromViewController: self) { (facebookResult, facebookError) in
             if facebookError != nil {
                 print(facebookError.localizedDescription)
             }else if facebookResult.isCancelled {
                 print("facebook login was cancelled")
             }else {
+                print("else is processed")
                 let credial: FIRAuthCredential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                print(FBSDKAccessToken.currentAccessToken().tokenString)
+                print("credial...\(credial)")
                 self.firebaseLoginWithCredial(credial)
             }
         }
     }
     
     func firebaseLoginWithCredial(credial: FIRAuthCredential) {
-        if ((FIRAuth.auth()?.currentUser) != nil) {
+        if FIRAuth.auth()?.currentUser != nil {
+            print("current user is not nil")
             FIRAuth.auth()?.currentUser?.linkWithCredential(credial, completion: { (user, error) in
                 if error != nil {
-                    print(error?.localizedDescription)
-                    return
+                    print("error happens")
+                    print("error reason...\(error!.localizedFailureReason)")
                 }else {
+                    print("sign in with credential")
                     FIRAuth.auth()?.signInWithCredential(credial, completion: { (user, error) in
                         if error != nil {
                             print(error?.localizedDescription)
+                        }else {
+                            print("Logged in")
                         }
                     })
+                }
+            })
+        }else {
+            print("current user is nil")
+            FIRAuth.auth()?.signInWithCredential(credial, completion: { (user, error) in
+                if error != nil {
+                    print(error!.localizedFailureReason)
+                }else {
+                    print("Logged in")
                 }
             })
         }
