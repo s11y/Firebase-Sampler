@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase //Firebaseをインポート
+import FBSDKLoginKit
+import FontAwesome_swift
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
@@ -23,6 +25,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self //デリゲートをセット
         passwordTextField.delegate = self //デリゲートをセット
         passwordTextField.secureTextEntry = true // 文字を非表示に
+        
+        self.layoutFacebookButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -50,7 +54,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func willLoginWithFacebook() {
-        
+        self.loginWithFacebook()
     }
     //Signupのためのメソッド
     func signup() {
@@ -79,11 +83,34 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     // Facebookでユーザー認証するためのメソッド
     func loginWithFacebook() {
-        FIRAuth.auth()?.signInWithCredential(, completion: { (user, error) in
-            if error != nil {
-                
+        let facebookLogin = FBSDKLoginManager()
+        facebookLogin.logInWithReadPermissions(["email"], fromViewController: self) { (facebookResult, facebookError) in
+            if facebookError != nil {
+                print(facebookError.localizedDescription)
+            }else if facebookResult.isCancelled {
+                print("facebook login was cancelled")
+            }else {
+                let credial: FIRAuthCredential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                self.firebaseLoginWithCredial(credial)
             }
-        })
+        }
+    }
+    
+    func firebaseLoginWithCredial(credial: FIRAuthCredential) {
+        if ((FIRAuth.auth()?.currentUser) != nil) {
+            FIRAuth.auth()?.currentUser?.linkWithCredential(credial, completion: { (user, error) in
+                if error != nil {
+                    print(error?.localizedDescription)
+                    return
+                }else {
+                    FIRAuth.auth()?.signInWithCredential(credial, completion: { (user, error) in
+                        if error != nil {
+                            print(error?.localizedDescription)
+                        }
+                    })
+                }
+            })
+        }
     }
     // ログイン済みかどうかと、メールのバリデーションが完了しているか確認
     func checkUserVerify()  -> Bool {
@@ -103,5 +130,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func layoutFacebookButton() {
+        facebookButton.setTitle(String.fontAwesomeIconWithName(.FacebookSquare), forState: .Normal)
+        facebookButton.titleLabel?.font = UIFont.fontAwesomeOfSize(24)
     }
 }

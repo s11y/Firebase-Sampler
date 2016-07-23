@@ -11,6 +11,7 @@
 		390928A31CF30E7500493172 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 390928A21CF30E7500493172 /* GoogleService-Info.plist */; };
 		390E15B61D1A837C008FDEDD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390E15B51D1A837C008FDEDD /* ProfileViewController.swift */; };
 		39176FC71D2BA808003C8DB2 /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39176FC61D2BA808003C8DB2 /* GlobalVariable.swift */; };
+		391E6C011D4373CD00C2CF8D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391E6C001D4373CD00C2CF8D /* Utility.swift */; };
 		392767531C7AD9AF00A5DB93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767521C7AD9AF00A5DB93 /* AppDelegate.swift */; };
 		392767551C7AD9AF00A5DB93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392767541C7AD9AF00A5DB93 /* ViewController.swift */; };
 		392767581C7AD9AF00A5DB93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 392767561C7AD9AF00A5DB93 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		390928A21CF30E7500493172 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		390E15B51D1A837C008FDEDD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		39176FC61D2BA808003C8DB2 /* GlobalVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
+		391E6C001D4373CD00C2CF8D /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		3927674F1C7AD9AF00A5DB93 /* SampleFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		392767521C7AD9AF00A5DB93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		392767541C7AD9AF00A5DB93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				390928A21CF30E7500493172 /* GoogleService-Info.plist */,
 				395A40AC1C81509200ED11C5 /* CustomCell */,
 				39176FC61D2BA808003C8DB2 /* GlobalVariable.swift */,
+				391E6C001D4373CD00C2CF8D /* Utility.swift */,
 			);
 			path = SampleFirebase;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			files = (
 				3928EE8C1CED74050065A9EF /* SignupViewController.swift in Sources */,
 				392767551C7AD9AF00A5DB93 /* ViewController.swift in Sources */,
+				391E6C011D4373CD00C2CF8D /* Utility.swift in Sources */,
 				395A40AE1C8151DD00ED11C5 /* ListViewController.swift in Sources */,
 				392767531C7AD9AF00A5DB93 /* AppDelegate.swift in Sources */,
 				390E15B61D1A837C008FDEDD /* ProfileViewController.swift in Sources */,
