@@ -72,6 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //ルートからのchildをユーザーIDに指定
         //ユーザーIDからのchildを受け取ったデータのIDに指定
         //updateChildValueを使って更新
+        ref.keepSynced(true)
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).child("\(self.selectedSnap.key)").updateChildValues(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": self.textField.text!, "date": FIRServerValue.timestamp()])
     }
     
