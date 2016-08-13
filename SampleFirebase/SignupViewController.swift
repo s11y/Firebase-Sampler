@@ -9,6 +9,7 @@
 import UIKit
 import Firebase //Firebaseをインポート
 import FBSDKLoginKit
+import TwitterKit
 import FontAwesome_swift
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
@@ -21,7 +22,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         emailTextField.delegate = self //デリゲートをセット
         passwordTextField.delegate = self //デリゲートをセット
         passwordTextField.secureTextEntry = true // 文字を非表示に
@@ -38,7 +39,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             self.transitionToView()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -95,6 +96,21 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 print(FBSDKAccessToken.currentAccessToken().tokenString)
                 print("credial...\(credial)")
                 self.firebaseLoginWithCredial(credial)
+            }
+        }
+    }
+    
+    @IBAction func loginWithTwitter(sender: TWTRLogInButton) {
+        sender.logInCompletion = { (session: TWTRSession?, err: NSError?) in
+            if let session = session {
+                let credential = FIRTwitterAuthProvider.credentialWithToken(session.authToken, secret: session.authTokenSecret)
+                
+                FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
+                    if let err = error {
+                        print(err)
+                        return
+                    }
+                })
             }
         }
     }

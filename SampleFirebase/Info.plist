@@ -62,7 +62,8 @@
                 <key>KitInfo</key>
                 <dict>
                     <key>consumerKey</key>
-                    <string>Oi3QBSGLMnaJy65nqaP3blKvS</string>,<key>consumerSecret</key>
+                    <string>Oi3QBSGLMnaJy65nqaP3blKvS</string>
+                    <key>consumerSecret</key>
                     <string>fVf3iUGFOJuluLPVJ3rb1uLpiHGA3loZaMZ2CEF410Urpt69V3</string>
                 </dict>
                 <key>KitName</key>
