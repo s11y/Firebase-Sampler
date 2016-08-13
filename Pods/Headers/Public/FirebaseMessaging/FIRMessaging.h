@@ -1,1 +1,1 @@
-../../../FirebaseMessaging/Headers/Public/FIRMessaging.h
+../../../FirebaseMessaging/Sources/FIRMessaging.h
