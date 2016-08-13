@@ -32,5 +32,44 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb524435181084570</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>524435181084570</string>
+    <key>FacebookDisplayName</key>
+    <string>Firebase-Sampler</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    <key>Fabric</key>
+    <dict>
+        <key>APIKey</key>
+        <string>ffb0837d378dee94035af754a0b5138773605654</string>
+        <key>Kits</key>
+        <array>
+            <dict>
+                <key>KitInfo</key>
+                <dict>
+                    <key>consumerKey</key>
+                    <string>Oi3QBSGLMnaJy65nqaP3blKvS</string>
+                    <key>consumerSecret</key>
+                    <string>fVf3iUGFOJuluLPVJ3rb1uLpiHGA3loZaMZ2CEF410Urpt69V3</string>
+                </dict>
+                <key>KitName</key>
+                <string>Twitter</string>
+            </dict>
+        </array>
+    </dict>
 </dict>
 </plist>

@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase //Firebaseをインポート
+import FBSDKLoginKit
+import TwitterKit
+import FontAwesome_swift
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
@@ -19,10 +22,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         emailTextField.delegate = self //デリゲートをセット
         passwordTextField.delegate = self //デリゲートをセット
         passwordTextField.secureTextEntry = true // 文字を非表示に
+        
+        self.layoutFacebookButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,7 +39,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             self.transitionToView()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,7 +55,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func willLoginWithFacebook() {
-        
+        self.loginWithFacebook()
     }
     //Signupのためのメソッド
     func signup() {
@@ -79,6 +84,65 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     // Facebookでユーザー認証するためのメソッド
     func loginWithFacebook() {
+        let facebookLogin = FBSDKLoginManager()
+        facebookLogin.logInWithReadPermissions(["email", "public_profile"], fromViewController: self) { (facebookResult, facebookError) in
+            if facebookError != nil {
+                print(facebookError.localizedDescription)
+            }else if facebookResult.isCancelled {
+                print("facebook login was cancelled")
+            }else {
+                print("else is processed")
+                let credial: FIRAuthCredential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                print(FBSDKAccessToken.currentAccessToken().tokenString)
+                print("credial...\(credial)")
+                self.firebaseLoginWithCredial(credial)
+            }
+        }
+    }
+    
+    @IBAction func loginWithTwitter(sender: TWTRLogInButton) {
+        sender.logInCompletion = { (session: TWTRSession?, err: NSError?) in
+            if let session = session {
+                let credential = FIRTwitterAuthProvider.credentialWithToken(session.authToken, secret: session.authTokenSecret)
+                
+                FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
+                    if let err = error {
+                        print(err)
+                        return
+                    }
+                })
+            }
+        }
+    }
+    
+    func firebaseLoginWithCredial(credial: FIRAuthCredential) {
+        if FIRAuth.auth()?.currentUser != nil {
+            print("current user is not nil")
+            FIRAuth.auth()?.currentUser?.linkWithCredential(credial, completion: { (user, error) in
+                if error != nil {
+                    print("error happens")
+                    print("error reason...\(error!.localizedFailureReason)")
+                }else {
+                    print("sign in with credential")
+                    FIRAuth.auth()?.signInWithCredential(credial, completion: { (user, error) in
+                        if error != nil {
+                            print(error?.localizedDescription)
+                        }else {
+                            print("Logged in")
+                        }
+                    })
+                }
+            })
+        }else {
+            print("current user is nil")
+            FIRAuth.auth()?.signInWithCredential(credial, completion: { (user, error) in
+                if error != nil {
+                    print(error!.localizedFailureReason)
+                }else {
+                    print("Logged in")
+                }
+            })
+        }
     }
     // ログイン済みかどうかと、メールのバリデーションが完了しているか確認
     func checkUserVerify()  -> Bool {
@@ -98,5 +162,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func layoutFacebookButton() {
+        facebookButton.setTitle(String.fontAwesomeIconWithName(.FacebookSquare), forState: .Normal)
+        facebookButton.titleLabel?.font = UIFont.fontAwesomeOfSize(24)
     }
 }

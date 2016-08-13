@@ -14,6 +14,8 @@ pod 'FontAwesome.swift'
 pod 'FBSDKLoginKit'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
+pod 'TwitterKit'
+pod 'Fabric'
 end
 
 target 'SampleFirebaseTests' do
