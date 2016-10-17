@@ -21,10 +21,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         emailTextField.delegate = self //デリゲートをセット
         passwordTextField.delegate = self //デリゲートをセット
-        passwordTextField.secureTextEntry  = true // 文字を非表示に
+        passwordTextField.isSecureTextEntry  = true // 文字を非表示に
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
 
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         login()
     }
     //Returnキーを押すと、キーボードを隠す
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -50,12 +50,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             //signInWithEmailでログイン
             //第一引数にEmail、第二引数にパスワードを取ります
-            FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
+            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 //エラーがないことを確認
                 if error == nil {
                     if let loginUser = user {
                         // バリデーションが完了しているか確認。完了ならそのままログイン
-                        if self.checkUserValidate(loginUser) {
+                        if self.checkUserValidate(user: loginUser) {
                             // 完了済みなら、ListViewControllerに遷移
                             print(FIRAuth.auth()?.currentUser)
                             self.transitionToView()
@@ -71,17 +71,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     // ログインした際に、バリデーションが完了しているか返す
     func checkUserValidate(user: FIRUser)  -> Bool {
-        return user.emailVerified
+        return user.isEmailVerified
     }
     // メールのバリデーションが完了していない場合のアラートを表示
     func presentValidateAlert() {
-        let alert = UIAlertController(title: "メール認証", message: "メール認証を行ってください", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "メール認証", message: "メール認証を行ってください", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     //ログイン完了後に、ListViewControllerへの遷移のためのメソッド
     func transitionToView()  {
-        self.performSegueWithIdentifier("toVC", sender: self)
+        self.performSegue(withIdentifier: "toVC", sender: self)
     }
 }
