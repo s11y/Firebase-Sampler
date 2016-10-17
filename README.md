@@ -4,11 +4,15 @@
 2016年5月からアップデートされたFirebaseで、Auth Database Push通知を実装しています。
 
 ### 開発環境
-Xcode 7.3.1
+Xcode 8.0
+
 OS X 10.11.5
-Firebase 3.2.1
-Firebase Database 3.0.1
-Firebase Auth 3.0.2
+
+Firebase 3.7.1
+
+Firebase Database 3.7.1
+
+Firebase Auth 3.0.5
 
 ## 仕様
 ### 画面構成
@@ -30,6 +34,8 @@ ListViewControllerのread()関数で自身のPOSTしたデータのみを読み�
 それぞれをTableViewで表示しています。
 
 FIRDataEventTypeをValueにすることで、すべての変化に対して対応しています
+
+
 
 #### UPDATE
 ViewControllerのupdate関数でデータベース上の該当のデータを更新しています。
