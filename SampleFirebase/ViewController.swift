@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self //デリゲートをセット
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //selectedSnapがnilならその後の処理をしない
         guard let snap = self.selectedSnap else { return }
@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             //更新するためのメソッド
             update()
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
         
     }
     //データの送信のメソッド
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     //Returnキーを押すと、キーボードを隠す
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

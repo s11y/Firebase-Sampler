@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         imagePicker.delegate = self
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.read()
     }
@@ -49,37 +49,37 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func presentActionSheet() {
-        let alert = UIAlertController(title: "写真を選択", message: "どちらから選択しますか?", preferredStyle: .ActionSheet)
-        let library = UIAlertAction(title: "ライブラリ", style: .Default) { (action) in
+        let alert = UIAlertController(title: "写真を選択", message: "どちらから選択しますか?", preferredStyle: .actionSheet)
+        let library = UIAlertAction(title: "ライブラリ", style: .default) { (action) in
             self.presentPhotoLibrary()
         }
         
-        let camera = UIAlertAction(title: "カメラ", style: .Default) { (action) in
+        let camera = UIAlertAction(title: "カメラ", style: .default) { (action) in
             self.presentCamera()
         }
         
         alert.addAction(library)
         alert.addAction(camera)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func presentPhotoLibrary() {
-        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-            imagePicker.sourceType = .PhotoLibrary
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
     func presentCamera() {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            imagePicker.sourceType = .Camera
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
     func create(uploadImage image: UIImage) {
-        let uploadData: NSData = UIImagePNGRepresentation(image)!
-        ref.child((FIRAuth.auth()?.currentUser?.uid)!).putData(uploadData, metadata: nil) { (data, error) in
+        let uploadData: Data = UIImagePNGRepresentation(image)!
+        ref.child((FIRAuth.auth()?.currentUser?.uid)!).put(uploadData, metadata: nil) { (data, error) in
             if error != nil {
                 print("\(error?.localizedDescription)")
             }else {
@@ -89,8 +89,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func read() {
-        let gsReference = FIRStorage.storage().referenceForURL("gs://sampledrud.appspot.com")
-        gsReference.child((FIRAuth.auth()?.currentUser?.uid)!).dataWithMaxSize(1 * 1028 * 1028) { (data, error) in
+        let gsReference = FIRStorage.storage().reference(forURL: "gs://sampledrud.appspot.com")
+        gsReference.child((FIRAuth.auth()?.currentUser?.uid)!).data(withMaxSize: 1 * 1028 * 1028) { (data, error) in
             if error != nil {
                 print("\(error?.localizedDescription)")
             }else {
@@ -118,21 +118,21 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             try FIRAuth.auth()?.signOut()
             
             //先頭のNavigationControllerに遷移
-            let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Nav")
-            self.presentViewController(storyboard, animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav")
+            self.present(storyboard, animated: true, completion: nil)
         }catch let error as NSError {
             print("\(error.localizedDescription)")
         }
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             uploadImage = image
             profileImageView.image = uploadImage
             self.create(uploadImage: uploadImage)
         }
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     

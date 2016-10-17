@@ -5,71 +5,69 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - Fabric (1.6.8)
-  - FBSDKCoreKit (4.14.0):
+  - Fabric (1.6.10)
+  - FBSDKCoreKit (4.16.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.14.0):
+  - FBSDKLoginKit (4.16.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.14.0):
+  - FBSDKShareKit (4.16.1):
     - FBSDKCoreKit
-  - Firebase (3.4.0):
-    - Firebase/Core (= 3.4.0)
-  - Firebase/Analytics (3.4.0):
-    - FirebaseAnalytics (~> 3.3)
-  - Firebase/Auth (3.4.0):
-    - Firebase/Analytics
-    - FirebaseAuth (= 3.0.4)
-  - Firebase/Core (3.4.0):
-    - Firebase/Analytics
-  - Firebase/Database (3.4.0):
-    - Firebase/Analytics
-    - FirebaseDatabase (= 3.0.2)
-  - Firebase/Messaging (3.4.0):
-    - Firebase/Analytics
-    - FirebaseMessaging (= 1.1.1)
-  - Firebase/Storage (3.4.0):
-    - Firebase/Analytics
-    - FirebaseStorage (= 1.0.2)
-  - FirebaseAnalytics (3.3.0):
+  - Firebase (3.7.1):
+    - Firebase/Core (= 3.7.1)
+  - Firebase/Auth (3.7.1):
+    - Firebase/Core
+    - FirebaseAuth (= 3.0.5)
+  - Firebase/Core (3.7.1):
+    - FirebaseAnalytics (= 3.4.4)
+    - FirebaseCore (= 3.4.3)
+  - Firebase/Database (3.7.1):
+    - Firebase/Core
+    - FirebaseDatabase (= 3.0.3)
+  - Firebase/Messaging (3.7.1):
+    - Firebase/Core
+    - FirebaseMessaging (= 1.2.0)
+  - Firebase/Storage (3.7.1):
+    - Firebase/Core
+    - FirebaseStorage (= 1.0.3)
+  - FirebaseAnalytics (3.4.4):
+    - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-    - GoogleUtilities (~> 1.2)
-  - FirebaseAuth (3.0.4):
-    - FirebaseAnalytics (~> 3.2)
+  - FirebaseAuth (3.0.5):
+    - FirebaseAnalytics (~> 3.3)
     - GoogleNetworkingUtilities (~> 1.2)
-    - GoogleParsingUtilities (~> 1.1)
     - GoogleUtilities (~> 1.2)
-  - FirebaseDatabase (3.0.2):
-    - FirebaseAnalytics (~> 3.2)
+  - FirebaseCore (3.4.3):
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleUtilities (~> 1.2)
+  - FirebaseDatabase (3.0.3):
+    - FirebaseAnalytics (~> 3.3)
   - FirebaseInstanceID (1.0.8)
-  - FirebaseMessaging (1.1.1):
+  - FirebaseMessaging (1.2.0):
     - FirebaseAnalytics (~> 3.3)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleIPhoneUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-  - FirebaseStorage (1.0.2):
-    - FirebaseAnalytics (~> 3.2)
+  - FirebaseStorage (1.0.3):
+    - FirebaseAnalytics (~> 3.3)
     - GoogleNetworkingUtilities (~> 1.2)
-  - FontAwesome.swift (0.8.0)
-  - GoogleInterchangeUtilities (1.2.1):
-    - GoogleSymbolUtilities (~> 1.0)
+  - FontAwesome.swift (0.11.1)
+  - GoogleInterchangeUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
   - GoogleIPhoneUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
     - GoogleUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.2.1):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleParsingUtilities (1.1.1):
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.1.1)
-  - GoogleUtilities (1.3.1):
-    - GoogleSymbolUtilities (~> 1.0)
-  - TwitterCore (2.3.0):
+  - GoogleNetworkingUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleSymbolUtilities (1.1.2)
+  - GoogleUtilities (1.3.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - TwitterCore (2.5.0):
     - Fabric
-  - TwitterKit (2.3.0):
-    - TwitterCore (= 2.3.0)
+  - TwitterKit (2.5.0):
+    - TwitterCore (= 2.5.0)
 
 DEPENDENCIES:
   - Fabric
@@ -81,32 +79,41 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
-  - FontAwesome.swift
+  - FontAwesome.swift (from `https://github.com/thii/FontAwesome.swift.git`)
   - TwitterKit
+
+EXTERNAL SOURCES:
+  FontAwesome.swift:
+    :git: https://github.com/thii/FontAwesome.swift.git
+
+CHECKOUT OPTIONS:
+  FontAwesome.swift:
+    :commit: b03d71746f277690d1ff7df0c539641c4ba57d4d
+    :git: https://github.com/thii/FontAwesome.swift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
-  FBSDKLoginKit: da563567a108050ef83739c8c8c001ee9e25fa13
-  FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
-  Firebase: 754562547af419cc2f4b15247fee419081924bc2
-  FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
-  FirebaseAuth: 26fd291c3b552fc9658420b867520d5ae080421c
-  FirebaseDatabase: 59bea2e7dfd81b3b8b2f8e396caf1a52c2ced6f7
+  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
+  Firebase: be473484f0d515e72ffd04acf22f981773c23e58
+  FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
+  FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
+  FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
+  FirebaseDatabase: 750a4a0fe18ef114318876fd654b2d9c671e0992
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
-  FirebaseMessaging: 6bc7cd2ecb875c1a9c0f8b94956398aa3145bbb8
-  FirebaseStorage: fa2a87dee81f682f553af6839daa37a750e65f6a
-  FontAwesome.swift: f8c6cc5c42cbe93bdc04371363bc7b371fb3d3a1
-  GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
+  FirebaseMessaging: 789d23fd796594dfb55dcf36cd325541df887c22
+  FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
+  FontAwesome.swift: 9879cd6a1462bf160662d519f7b7474d73bdd1c3
+  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
-  GoogleNetworkingUtilities: 3e83269048cfb498dc7ec83ab36813360965c74f
-  GoogleParsingUtilities: 30b3896f9ee167dc78747f013d3de157ced1cadf
-  GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
-  GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  TwitterCore: 817eae3e291fa4125b47789e26a4f6f024115c1f
-  TwitterKit: 8a383da8d9c21b0423716381ea8bbfce20622d91
+  GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
+  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
+  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  TwitterCore: 95c46af93112768a7983bd370d66023553601d01
+  TwitterKit: dd8042698b0ff5bd3066fa919b3b2b50d8eed829
 
-PODFILE CHECKSUM: 81e9165bf4efddc5137b8c6e39d969021e033d1a
+PODFILE CHECKSUM: 5addc5660cdd10790ac3c0e2d27660ef4adb93c6
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2
