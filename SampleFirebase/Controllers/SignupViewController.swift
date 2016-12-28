@@ -12,7 +12,7 @@ import FBSDKLoginKit
 import TwitterKit
 import FontAwesome_swift
 
-class SignupViewController: UIViewController, UITextFieldDelegate {
+class SignupViewController: UIViewController {
     
     @IBOutlet var emailTextField: UITextField! // Emailを打つためのTextField
     
@@ -39,11 +39,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             self.transitionToView()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     //サインアップボタン
     @IBAction func willSignup() {
         //サインアップのための関数
@@ -87,7 +83,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         let facebookLogin = FBSDKLoginManager()
         facebookLogin.logIn(withReadPermissions: ["email", "public_profile"], from: self) { (facebookResult, facebookError) in
             if facebookError != nil {
-                print(facebookError?.localizedDescription)
+                print("\(facebookError?.localizedDescription)")
             }else if (facebookResult?.isCancelled)! {
                 print("facebook login was cancelled")
             }else {
@@ -158,14 +154,19 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     func transitionToView() {
         self.performSegue(withIdentifier: "toView", sender: self)
     }
-    //Returnキーを押すと、キーボードを隠す
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     
     func layoutFacebookButton() {
         facebookButton.setTitle(String.fontAwesomeIcon(name: .facebookSquare), for: .normal)
         facebookButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24)
+    }
+}
+
+
+extension SignupViewController: UITextFieldDelegate {
+    
+    //Returnキーを押すと、キーボードを隠す
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

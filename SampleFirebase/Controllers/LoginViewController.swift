@@ -10,7 +10,7 @@ import UIKit
 import Firebase //Firebaseをインポート
 import FontAwesome_swift
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     @IBOutlet var emailTextField: UITextField! // Emailを打つためのTextField
     
@@ -24,24 +24,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.isSecureTextEntry  = true // 文字を非表示に
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     //ログインボタン
     @IBAction func didRegisterUser() {
         //ログインのためのメソッド
         login()
     }
-    //Returnキーを押すと、キーボードを隠す
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+
     //ログインのためのメソッド
     func login() {
             //EmailとPasswordのTextFieldに文字がなければ、その後の処理をしない
@@ -68,10 +56,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             })
     }
+    
     // ログインした際に、バリデーションが完了しているか返す
     func checkUserValidate(_ user: FIRUser)  -> Bool {
         return user.isEmailVerified
     }
+    
     // メールのバリデーションが完了していない場合のアラートを表示
     func presentValidateAlert() {
         let alert = UIAlertController(title: "メール認証", message: "メール認証を行ってください", preferredStyle: .alert)
@@ -82,5 +72,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //ログイン完了後に、ListViewControllerへの遷移のためのメソッド
     func transitionToView()  {
         self.performSegue(withIdentifier: "toVC", sender: self)
+    }
+}
+
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    //Returnキーを押すと、キーボードを隠す
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
