@@ -77,12 +77,12 @@
 		392767461C7AD9AF00A5DB93 = {
 			isa = PBXGroup;
 			children = (
+				5B09693A60C54B69D3957206 /* Frameworks */,
+				D40A4DD98AEB0D4C07AF9308 /* Pods */,
+				392767501C7AD9AF00A5DB93 /* Products */,
 				392767511C7AD9AF00A5DB93 /* SampleFirebase */,
 				392767661C7AD9AF00A5DB93 /* SampleFirebaseTests */,
 				392767711C7AD9AF00A5DB93 /* SampleFirebaseUITests */,
-				392767501C7AD9AF00A5DB93 /* Products */,
-				D40A4DD98AEB0D4C07AF9308 /* Pods */,
-				5B09693A60C54B69D3957206 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +97,12 @@
 		392767511C7AD9AF00A5DB93 /* SampleFirebase */ = {
 			isa = PBXGroup;
 			children = (
-				392767521C7AD9AF00A5DB93 /* AppDelegate.swift */,
-				395A409F1C81437A00ED11C5 /* Defaults-master */,
 				3928EE8D1CED742D0065A9EF /* Controllers */,
+				395A40AC1C81509200ED11C5 /* CustomCell */,
+				395A409F1C81437A00ED11C5 /* Defaults-master */,
 				39C186FD1E1405DD00B70042 /* Resources */,
 				39C186FE1E1405E900B70042 /* plists */,
-				395A40AC1C81509200ED11C5 /* CustomCell */,
+				392767521C7AD9AF00A5DB93 /* AppDelegate.swift */,
 				39176FC61D2BA808003C8DB2 /* GlobalVariable.swift */,
 				391E6C001D4373CD00C2CF8D /* Utility.swift */,
 			);
@@ -112,8 +112,8 @@
 		392767661C7AD9AF00A5DB93 /* SampleFirebaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				392767671C7AD9AF00A5DB93 /* SampleFirebaseTests.swift */,
 				392767691C7AD9AF00A5DB93 /* Info.plist */,
+				392767671C7AD9AF00A5DB93 /* SampleFirebaseTests.swift */,
 			);
 			path = SampleFirebaseTests;
 			sourceTree = "<group>";
@@ -121,8 +121,8 @@
 		392767711C7AD9AF00A5DB93 /* SampleFirebaseUITests */ = {
 			isa = PBXGroup;
 			children = (
-				392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */,
 				392767741C7AD9AF00A5DB93 /* Info.plist */,
+				392767721C7AD9AF00A5DB93 /* SampleFirebaseUITests.swift */,
 			);
 			path = SampleFirebaseUITests;
 			sourceTree = "<group>";
@@ -130,13 +130,14 @@
 		3928EE8D1CED742D0065A9EF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				392767541C7AD9AF00A5DB93 /* ViewController.swift */,
 				395A40AD1C8151DD00ED11C5 /* ListViewController.swift */,
 				3940EE661CE8409900293067 /* LoginViewController.swift */,
-				3928EE8B1CED74050065A9EF /* SignupViewController.swift */,
 				390E15B51D1A837C008FDEDD /* ProfileViewController.swift */,
+				3928EE8B1CED74050065A9EF /* SignupViewController.swift */,
+				392767541C7AD9AF00A5DB93 /* ViewController.swift */,
 			);
 			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		395A409F1C81437A00ED11C5 /* Defaults-master */ = {
@@ -156,25 +157,28 @@
 				395A40A91C81500D00ED11C5 /* ListTableViewCell.xib */,
 			);
 			name = CustomCell;
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		39C186FD1E1405DD00B70042 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				392767561C7AD9AF00A5DB93 /* Main.storyboard */,
 				392767591C7AD9AF00A5DB93 /* Assets.xcassets */,
 				3927675B1C7AD9AF00A5DB93 /* LaunchScreen.storyboard */,
+				392767561C7AD9AF00A5DB93 /* Main.storyboard */,
 			);
 			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		39C186FE1E1405E900B70042 /* plists */ = {
 			isa = PBXGroup;
 			children = (
-				3927675E1C7AD9AF00A5DB93 /* Info.plist */,
 				390928A21CF30E7500493172 /* GoogleService-Info.plist */,
+				3927675E1C7AD9AF00A5DB93 /* Info.plist */,
 			);
 			name = plists;
+			path = plists;
 			sourceTree = "<group>";
 		};
 		5B09693A60C54B69D3957206 /* Frameworks */ = {
@@ -355,6 +359,7 @@
 				392767571C7AD9AF00A5DB93 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		3927675B1C7AD9AF00A5DB93 /* LaunchScreen.storyboard */ = {
@@ -363,6 +368,7 @@
 				3927675C1C7AD9AF00A5DB93 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -463,7 +469,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ryosei Shinoki (L6HQQDT63H)";
 				DEVELOPMENT_TEAM = SLHYE76MHB;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				INFOPLIST_FILE = SampleFirebase/Info.plist;
+				INFOPLIST_FILE = SampleFirebase/plists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.litech.SampleFirebase;
@@ -482,7 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				INFOPLIST_FILE = SampleFirebase/Info.plist;
+				INFOPLIST_FILE = SampleFirebase/plists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.litech.SampleFirebase;
