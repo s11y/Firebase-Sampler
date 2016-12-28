@@ -9,7 +9,8 @@
 import UIKit
 
 class Utility: NSObject {
-    func showAlert(title: String, message: String, onViewController viewcontroller: UIViewController, buttonTitle button: String) {
+    
+    func showAlert(_ title: String, message: String, onViewController viewcontroller: UIViewController, buttonTitle button: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: button, style: .default, handler: nil)
         alert.addAction(defaultAction)

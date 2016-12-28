@@ -18,11 +18,7 @@ pod 'TwitterKit'
 pod 'Fabric'
 end
 
-target 'SampleFirebaseTests' do
 
-end
 
-target 'SampleFirebaseUITests' do
 
-end
 

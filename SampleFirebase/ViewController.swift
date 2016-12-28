@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     //投稿ボタン
-    @IBAction func post(sender: UIButton) {
+    @IBAction func post(_ sender: UIButton) {
         if isCreate {
             //投稿のためのメソッド
             create()
@@ -75,10 +75,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ref.keepSynced(true)
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).child("\(self.selectedSnap.key)").updateChildValues(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": self.textField.text!, "date": FIRServerValue.timestamp()])
     }
-    
-
-    
-    
     
     //Returnキーを押すと、キーボードを隠す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

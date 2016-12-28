@@ -34,17 +34,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SampleFirebase.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-SampleFirebaseTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-SampleFirebaseUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>095F48F613FB9D5FF332785D1065137A</key>
+		<key>44CAD6CE523055ED339E87154473A254</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1FE2578FF0805299395CF2A0206BB671</key>
+		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E303C3CE7513908EE880D9CA833AFAE</key>
+		<key>77979430716929ED71E6E262A9F9A184</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>30D7FCF8072F5D59AE1C98D94F9A6EC9</key>
+		<key>BC5000D645EEAF961C85907CDC796FE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
+		<key>BEF7E6E85DB5CDE5D7A18F4F2EB8494B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>86F563C354D3457FAD09B220BAB2348D</key>
+		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
+		<key>C74D47B051BF84CA30E0723F127F42AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D47B8C91AD197961B9CCE65ED6B89CD4</key>
+		<key>E396A93E4C79B22B7816E9F02F62ECED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EF4F067C2D0E135B80299B089E168BDA</key>
+		<key>F383CB68B16FD48FEE23DF9283776EAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

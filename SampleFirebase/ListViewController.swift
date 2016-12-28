@@ -72,12 +72,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.snap = snapShots
                 
             }
-            self.reload(snap: self.snap)
+            self.reload(self.snap)
         })
     }
     
     //読み込んだデータは最初すべてのデータが一つにまとまっているので、それらを分割して、配列に入れる
-    func reload(snap: FIRDataSnapshot) {
+    func reload(_ snap: FIRDataSnapshot) {
         if snap.exists() {
             print(snap)
             //FIRDataSnapshotが存在するか確認
@@ -99,7 +99,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //timestampで保存されている投稿時間を年月日に表示形式を変換する
-    func getDate(number: TimeInterval) -> String {
+    func getDate(_ number: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: number)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -113,9 +113,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func didSelectRow(selectedIndexPath indexPath: IndexPath) {
         //ルートからのchildをユーザーのIDに指定
         //ユーザーIDからのchildを選択されたCellのデータのIDに指定
-        //removeValueで削除
         self.selectedSnap = contentArray[indexPath.row]
-        //ローカルの配列からも削除
         self.transition()
     }
     
@@ -153,7 +151,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         //dateという添字で保存していた投稿時間をtimeという定数に代入
         let time = content["date"] as! TimeInterval
         //getDate関数を使って、時間をtimestampから年月日に変換して表示
-        cell.postDateLabel.text = self.getDate(number: time/1000)
+        cell.postDateLabel.text = self.getDate(time/1000)
         
         return cell
     }

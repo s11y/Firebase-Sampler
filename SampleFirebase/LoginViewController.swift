@@ -55,9 +55,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if error == nil {
                     if let loginUser = user {
                         // バリデーションが完了しているか確認。完了ならそのままログイン
-                        if self.checkUserValidate(user: loginUser) {
+                        if self.checkUserValidate(loginUser) {
                             // 完了済みなら、ListViewControllerに遷移
-                            print(FIRAuth.auth()?.currentUser)
                             self.transitionToView()
                         }else {
                             // 完了していない場合は、アラートを表示
@@ -70,7 +69,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             })
     }
     // ログインした際に、バリデーションが完了しているか返す
-    func checkUserValidate(user: FIRUser)  -> Bool {
+    func checkUserValidate(_ user: FIRUser)  -> Bool {
         return user.isEmailVerified
     }
     // メールのバリデーションが完了していない場合のアラートを表示
