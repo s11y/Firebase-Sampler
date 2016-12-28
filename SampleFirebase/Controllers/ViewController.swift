@@ -9,7 +9,7 @@
 import UIKit
 import Firebase //Firebaseをインポート
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
     
     let ref = FIRDatabase.database().reference() //FirebaseDatabaseのルートを指定
     
@@ -38,10 +38,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         isCreate = false
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     //投稿ボタン
     @IBAction func post(_ sender: UIButton) {
         if isCreate {
@@ -75,12 +71,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ref.keepSynced(true)
         ref.child((FIRAuth.auth()?.currentUser?.uid)!).child("\(self.selectedSnap.key)").updateChildValues(["user": (FIRAuth.auth()?.currentUser?.uid)!,"content": self.textField.text!, "date": FIRServerValue.timestamp()])
     }
+}
+
+
+extension ViewController: UITextFieldDelegate {
     
     //Returnキーを押すと、キーボードを隠す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
 }
-
