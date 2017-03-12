@@ -5,12 +5,12 @@ use_frameworks!
 
 target 'SampleFirebase' do
 
-pod 'Firebase', '>=2.5.0'
+pod 'Firebase'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Messaging'
 pod 'Firebase/Storage'
-pod 'FontAwesome.swift', :git=>'https://github.com/thii/FontAwesome.swift.git'
+pod 'FontAwesome.swift'
 pod 'FBSDKLoginKit'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'

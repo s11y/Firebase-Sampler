@@ -54,7 +54,7 @@ PODS:
   - FirebaseStorage (1.0.5):
     - FirebaseAnalytics (~> 3.5)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FontAwesome.swift (1.1.0)
+  - FontAwesome.swift (1.0.0)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
@@ -81,22 +81,13 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
-  - Firebase (>= 2.5.0)
+  - Firebase
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
-  - FontAwesome.swift (from `https://github.com/thii/FontAwesome.swift.git`)
+  - FontAwesome.swift
   - TwitterKit
-
-EXTERNAL SOURCES:
-  FontAwesome.swift:
-    :git: https://github.com/thii/FontAwesome.swift.git
-
-CHECKOUT OPTIONS:
-  FontAwesome.swift:
-    :commit: 2309b11d3ed5895fda0bfdc392d16a1d199c97c0
-    :git: https://github.com/thii/FontAwesome.swift.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -112,7 +103,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseMessaging: acf66347e43c5637c697060c3001d25c809a4131
   FirebaseStorage: 5738284835edb57f0e81d4ae5832bb17c1e4b5fa
-  FontAwesome.swift: beb63f208f69f998d00fdb2d4d5d8813b494f3d8
+  FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
@@ -120,6 +111,6 @@ SPEC CHECKSUMS:
   TwitterCore: fbdbeaf6d2d20cf7c7aa4136fe5173c1c85df2e2
   TwitterKit: 97e729ceea041d174126235bf6ff67dcf37772d4
 
-PODFILE CHECKSUM: 87ad8f458614ac72e3ba2181290097a807339799
+PODFILE CHECKSUM: e651c2a1e8aa8fd635a0b0f8ff344163d59bb61d
 
 COCOAPODS: 1.1.1
