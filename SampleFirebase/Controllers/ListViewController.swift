@@ -31,7 +31,6 @@ class ListViewController: UIViewController {
         
         table.delegate = self //デリゲートをセット
         table.dataSource = self //デリゲートをセット
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,10 +171,10 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //デリートボタンを追加
         if editingStyle == .delete {
-            //選択されたCellのNSIndexPathを渡し、データをFirebase上から削除するためのメソッド
+            //選択されたCellのIndexPathを渡し、データをFirebase上から削除するためのメソッド
             self.delete(deleteIndexPath: indexPath)
             //TableView上から削除
-            table.deleteRows(at: [indexPath as IndexPath], with: .fade)
+            table.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
