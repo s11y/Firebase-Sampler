@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
             
             //signInWithEmailでログイン
             //第一引数にEmail、第二引数にパスワードを取ります
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                 //エラーがないことを確認
                 if error == nil {
                     if let loginUser = user {
@@ -52,13 +52,13 @@ class LoginViewController: UIViewController {
                         }
                     }
                 }else {
-                    print("error...\(error?.localizedDescription)")
+                    print("error...\(String(describing: error?.localizedDescription))")
                 }
             })
     }
     
     // ログインした際に、バリデーションが完了しているか返す
-    func checkUserValidate(_ user: FIRUser)  -> Bool {
+    func checkUserValidate(_ user: User)  -> Bool {
         return user.isEmailVerified
     }
     

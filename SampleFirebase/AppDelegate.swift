@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(notificationSetting)
         application.registerForRemoteNotifications()
         
-        FIRApp.configure() //Firebaseとコネクト
+        FirebaseApp.configure() //Firebaseとコネクト
         Fabric.with([Twitter.self])
-        FIRDatabase.database().persistenceEnabled = true //ローカルにデータベースを構築する設定
+        Database.database().isPersistenceEnabled = true //ローカルにデータベースを構築する設定
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

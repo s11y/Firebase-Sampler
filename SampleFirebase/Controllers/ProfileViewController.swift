@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     var imagePicker: UIImagePickerController!
     
-    let ref = FIRStorage.storage().reference()
+    let ref = Storage.storage().reference()
     
     var uploadImage: UIImage!
 
@@ -79,9 +79,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     func create(uploadImage image: UIImage) {
         let uploadData: Data = UIImagePNGRepresentation(image)!
-        ref.child((FIRAuth.auth()?.currentUser?.uid)!).put(uploadData, metadata: nil) { (data, error) in
+        ref.child((Auth.auth().currentUser?.uid)!).putData(uploadData, metadata: nil) { (data, error) in
             if error != nil {
-                print("\(error?.localizedDescription)")
+                print("\(String(describing: error?.localizedDescription))")
             }else {
                 
             }
@@ -89,10 +89,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func read() {
-        let gsReference = FIRStorage.storage().reference(forURL: "gs://sampledrud.appspot.com")
-        gsReference.child((FIRAuth.auth()?.currentUser?.uid)!).data(withMaxSize: 1 * 1028 * 1028) { (data, error) in
+        let gsReference = Storage.storage().reference(forURL: "gs://sampledrud.appspot.com")
+        gsReference.child((Auth.auth().currentUser?.uid)!).getData(maxSize: 1 * 1028 * 1028) { (data, error) in
             if error != nil {
-                print("\(error?.localizedDescription)")
+                print("\(String(describing: error?.localizedDescription))")
             }else {
                 self.uploadImage = UIImage(data: data!)
                 self.profileImageView.image = self.uploadImage
@@ -115,7 +115,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     func logout() {
         do {
             //do-try-catchの中で、FIRAuth.auth()?.signOut()を呼ぶだけで、ログアウトが完了
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth().signOut()
             
             //先頭のNavigationControllerに遷移
             let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav")
