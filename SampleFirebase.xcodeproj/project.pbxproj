@@ -29,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		04468F72978B9AF5F328D20B /* Pods_SampleFirebaseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleFirebaseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0611B9ADA29E0BC97E1B8713 /* Pods-SampleFirebaseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleFirebaseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleFirebaseUITests/Pods-SampleFirebaseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		22D580FFB9D9CBC518BF511A /* Pods-SampleFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleFirebase/Pods-SampleFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		390928A21CF30E7500493172 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		390E15B51D1A837C008FDEDD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -54,11 +53,8 @@
 		395A40A81C81500D00ED11C5 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		395A40A91C81500D00ED11C5 /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		395A40AD1C8151DD00ED11C5 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		528036F300031CDF468294B7 /* Pods-SampleFirebaseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleFirebaseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleFirebaseUITests/Pods-SampleFirebaseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54910877D65260CE531370A0 /* Pods_SampleFirebaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleFirebaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2A0EB4F8895D1C0A421D8A /* Pods-SampleFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleFirebase/Pods-SampleFirebase.release.xcconfig"; sourceTree = "<group>"; };
-		9EAC4D6EB718098E27F980C1 /* Pods-SampleFirebaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleFirebaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleFirebaseTests/Pods-SampleFirebaseTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E585CF505F8569E556C87894 /* Pods-SampleFirebaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleFirebaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleFirebaseTests/Pods-SampleFirebaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		F0E841C4AFCAF12003CAE50B /* Pods_SampleFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -192,10 +188,6 @@
 			children = (
 				22D580FFB9D9CBC518BF511A /* Pods-SampleFirebase.debug.xcconfig */,
 				6F2A0EB4F8895D1C0A421D8A /* Pods-SampleFirebase.release.xcconfig */,
-				9EAC4D6EB718098E27F980C1 /* Pods-SampleFirebaseTests.debug.xcconfig */,
-				E585CF505F8569E556C87894 /* Pods-SampleFirebaseTests.release.xcconfig */,
-				0611B9ADA29E0BC97E1B8713 /* Pods-SampleFirebaseUITests.debug.xcconfig */,
-				528036F300031CDF468294B7 /* Pods-SampleFirebaseUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -295,7 +287,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BE4C9EB81836302F7F253FE7 /* [CP] Copy Pods Resources */ = {
