@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="K62-wY-j4T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="K62-wY-j4T">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -254,7 +254,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Nav" automaticallyAdjustsScrollViewInsets="NO" id="K62-wY-j4T" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yzM-SJ-rrf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yzM-SJ-rrf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -293,7 +293,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oS1-iq-Uh1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="78J-Jd-udA"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Na7-gZ-m6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Na7-gZ-m6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -312,7 +312,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jfb-Py-H5A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="RRP-EQ-eib"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="csv-TC-bcM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="csv-TC-bcM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
