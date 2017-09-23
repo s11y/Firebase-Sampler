@@ -17,9 +17,7 @@ class ListViewController: UIViewController {
     
     let ref = Database.database().reference() //Firebaseのルートを宣言しておく
     
-    var snap: DataSnapshot!
-    
-    var selectedSnap: DataSnapshot!
+    var selectedSnap: DataSnapshot?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +58,9 @@ class ListViewController: UIViewController {
                 print("snapShots.children...\(snapShots.childrenCount)") //いくつのデータがあるかプリント
                 
                 print("snapShot...\(snapShots)") //読み込んだデータをプリント
-                
-                self.snap = snapShots
-                
+
+                self.reload(snapShots)
             }
-            self.reload(self.snap)
         })
     }
     

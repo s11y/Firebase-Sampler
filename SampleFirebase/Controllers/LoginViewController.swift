@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
                 if error == nil {
                     if let loginUser = user {
                         // バリデーションが完了しているか確認。完了ならそのままログイン
-                        if self.checkUserValidate(loginUser) {
+                        if loginUser.isEmailVerified {
                             // 完了済みなら、ListViewControllerに遷移
                             self.transitionToView()
                         }else {
@@ -55,11 +55,6 @@ class LoginViewController: UIViewController {
                     print("error...\(String(describing: error?.localizedDescription))")
                 }
             })
-    }
-    
-    // ログインした際に、バリデーションが完了しているか返す
-    func checkUserValidate(_ user: User)  -> Bool {
-        return user.isEmailVerified
     }
     
     // メールのバリデーションが完了していない場合のアラートを表示
