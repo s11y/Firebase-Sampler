@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase //Firebaseをインポート
+import FirebaseAuth
 import FBSDKLoginKit
 import TwitterKit
 import FontAwesome_swift
@@ -60,11 +61,11 @@ class SignupViewController: UIViewController {
         guard let password = passwordTextField.text else { return }
         //FIRAuth.auth()?.createUserWithEmailでサインアップ
         //第一引数にEmail、第二引数にパスワード
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
             //エラーなしなら、認証完了
             if error == nil{
                 // メールのバリデーションを行う
-                user?.sendEmailVerification(completion: { (error) in
+                authResult?.user.sendEmailVerification(completion: { (error) in
                     if error == nil {
                         // エラーがない場合にはそのままログイン画面に飛び、ログインしてもらう
                         self.transitionToLogin()
@@ -100,8 +101,7 @@ class SignupViewController: UIViewController {
         sender.logInCompletion = { (session: TWTRSession?, err: NSError?) in
             if let session = session {
                 let credential = TwitterAuthProvider.credential(withToken: session.authToken, secret: session.authTokenSecret)
-                
-                Auth.auth().signIn(with: credential, completion: { (user, error) in
+                Auth.auth().signInAndRetrieveData(with: credential, completion: { dataResult, error in
                     if let err = error {
                         print(err)
                         return
@@ -114,13 +114,13 @@ class SignupViewController: UIViewController {
     func firebaseLoginWithCredial(_ credial: AuthCredential) {
         if Auth.auth().currentUser != nil {
             print("current user is not nil")
-            Auth.auth().currentUser?.link(with: credial, completion: { (user, error) in
+            Auth.auth().currentUser?.linkAndRetrieveData(with: credial, completion: { dataResult, error in
                 if error != nil {
                     print("error happens")
                     print("error reason...\(String(describing: error))")
                 }else {
                     print("sign in with credential")
-                    Auth.auth().signIn(with: credial, completion: { (user, error) in
+                    Auth.auth().signInAndRetrieveData(with: credial, completion: { dataResult, error in
                         if error != nil {
                             print("\(String(describing: error?.localizedDescription))")
                         }else {
@@ -131,13 +131,13 @@ class SignupViewController: UIViewController {
             })
         }else {
             print("current user is nil")
-            Auth.auth().signIn(with: credial, completion: { (user, error) in
+            Auth.auth().signInAndRetrieveData(with: credial) { dataResult, error in
                 if error != nil {
                     print("\(String(describing: error))")
                 }else {
                     print("Logged in")
                 }
-            })
+            }
         }
     }
     // ログイン済みかどうかと、メールのバリデーションが完了しているか確認

@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import Firebase //Firebaseをインポート
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Firebase
+import FirebaseDatabase
 import Fabric
 import TwitterKit
 
@@ -25,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         FirebaseApp.configure() //Firebaseとコネクト
-        Fabric.with([Twitter.self])
         Database.database().isPersistenceEnabled = true //ローカルにデータベースを構築する設定
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

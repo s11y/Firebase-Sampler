@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase //Firebaseをインポート
+import FirebaseAuth
 import FontAwesome_swift
 
 class LoginViewController: UIViewController {
@@ -38,12 +39,12 @@ class LoginViewController: UIViewController {
             
             //signInWithEmailでログイン
             //第一引数にEmail、第二引数にパスワードを取ります
-            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (authResults, error) in
                 //エラーがないことを確認
                 if error == nil {
-                    if let loginUser = user {
+                    if let user = authResults?.user {
                         // バリデーションが完了しているか確認。完了ならそのままログイン
-                        if loginUser.isEmailVerified {
+                        if user.isEmailVerified {
                             // 完了済みなら、ListViewControllerに遷移
                             self.transitionToView()
                         }else {
