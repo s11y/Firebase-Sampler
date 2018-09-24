@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func create(uploadImage image: UIImage) {
-        let uploadData: Data = UIImagePNGRepresentation(image)!
+        let uploadData: Data = image.pngData()!
         ref.child((Auth.auth().currentUser?.uid)!).putData(uploadData, metadata: nil) { (data, error) in
             if error != nil {
                 print("\(String(describing: error?.localizedDescription))")
@@ -125,9 +125,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
         
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        if let image: UIImage = info[.originalImage] as? UIImage {
+
             uploadImage = image
             profileImageView.image = uploadImage
             self.create(uploadImage: uploadImage)

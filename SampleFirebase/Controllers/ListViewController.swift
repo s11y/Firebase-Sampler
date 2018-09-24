@@ -36,7 +36,7 @@ class ListViewController: UIViewController {
         
         //Cellの高さを調節
         table.estimatedRowHeight = 56
-        table.rowHeight = UITableViewAutomaticDimension
+        table.rowHeight = UITableView.automaticDimension
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -164,7 +164,7 @@ extension ListViewController: UITableViewDataSource {
 extension ListViewController: UITableViewDelegate {
     
     //スワイプ削除のメソッド
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         //デリートボタンを追加
         if editingStyle == .delete {
             //選択されたCellのIndexPathを渡し、データをFirebase上から削除するためのメソッド

@@ -126,7 +126,7 @@ class SignupViewController: UIViewController {
                         }else {
                             print("Logged in")
                         }
-                    })
+                    }) 
                 }
             })
         }else {
@@ -157,7 +157,7 @@ class SignupViewController: UIViewController {
     
     func layoutFacebookButton() {
         facebookButton.setTitle(String.fontAwesomeIcon(name: .facebookSquare), for: .normal)
-        facebookButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24)
+        facebookButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 24, style: FontAwesomeStyle.solid)
     }
 }
 
