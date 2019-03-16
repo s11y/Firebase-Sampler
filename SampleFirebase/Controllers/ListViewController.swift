@@ -81,7 +81,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    func delete(deleteIndexPath indexPath: IndexPath) {
+    func delete(at indexPath: IndexPath) {
         ref.child((Auth.auth().currentUser?.uid)!).child(contentArray[indexPath.row].key).removeValue()
         contentArray.remove(at: indexPath.row)
     }
@@ -98,7 +98,7 @@ class ListViewController: UIViewController {
         self.performSegue(withIdentifier: "toView", sender: self)
     }
     
-    func didSelectRow(selectedIndexPath indexPath: IndexPath) {
+    func didSelectRow(at indexPath: IndexPath) {
         //ルートからのchildをユーザーのIDに指定
         //ユーザーIDからのchildを選択されたCellのデータのIDに指定
         self.selectedSnap = contentArray[indexPath.row]
@@ -168,13 +168,13 @@ extension ListViewController: UITableViewDelegate {
         //デリートボタンを追加
         if editingStyle == .delete {
             //選択されたCellのIndexPathを渡し、データをFirebase上から削除するためのメソッド
-            self.delete(deleteIndexPath: indexPath)
+            self.delete(at: indexPath)
             //TableView上から削除
             table.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.didSelectRow(selectedIndexPath: indexPath)
+        self.didSelectRow(at: indexPath)
     }
 }

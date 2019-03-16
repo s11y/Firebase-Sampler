@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         self.updateProfileImageView()
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -33,11 +33,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.read()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func didSelectPlus() {
@@ -120,7 +115,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             //先頭のNavigationControllerに遷移
             let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav")
             self.present(storyboard, animated: true, completion: nil)
-        }catch let error as NSError {
+        } catch let error as NSError {
             print("\(error.localizedDescription)")
         }
         
